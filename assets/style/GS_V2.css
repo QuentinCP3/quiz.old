@@ -1,0 +1,341 @@
+body{
+  max-width: 1920px;
+  max-height: 1080px;
+  background: black;
+  overflow: hidden;
+}
+#circle{
+  width: 100px;
+  position: absolute;
+  top:806px;
+  left: 960px;
+  display: none;
+  z-index: 1;
+}
+.animDebut{
+  display: block!important;
+  animation-name: tournes;
+  animation-duration:0.4s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.finAnim{
+  display:block!important;
+  animation: retournes 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+  /*animation-delay: 0s;*/
+}
+@keyframes tournes {
+  0%{
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  30%{
+    opacity:1;
+  }
+  100% {
+     transform: rotate(360deg);
+      opacity: 1;
+   }
+}
+@keyframes retournes {
+  0% {
+    transform: rotate(0deg);
+    opacity: 2;
+  }
+  50%{
+    opacity:1;
+  }
+100% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+}
+#rectDroite2{
+  width: 551px;
+  height: 121px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top:773px;
+  left:1011px;
+}
+#aileDroite2{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:-4px;
+  display: none;
+  z-index: -1;
+
+}
+.deploiementAileDroite2{
+  display: block!important;
+  animation: goToRight  0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-delay: 1s;
+  animation-play-state: running;
+}
+.retourAileDroite2{
+  display: block!important;
+  animation: goToLeft 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+
+ @keyframes goToRight {
+   0%{
+     transform: translateX(-550px);
+
+     }
+
+   100%{
+      transform: translateX(0px);
+
+    }
+  }
+  @keyframes goToLeft {
+    0%{
+      transform: translateX(0px);
+      opacity: 1;
+      }
+
+     100%{
+       transform: translateX(-550px);
+      opacity: 0;
+
+     }
+  }
+  #rectDroite3{
+    width: 551px;
+    height: 121px;
+    overflow: hidden;
+    z-index: -1;
+    position: absolute;
+    top:773px;
+    left:459px;
+  }
+  #aileDroite3{
+    width:547px;
+    position: absolute;
+    left:0px;
+    top:-4px;
+    display: none;
+    z-index: -1;
+
+  }
+  .deploiementAileDroite3{
+    display: block!important;
+    animation: parsGauche  0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation-delay: 1s;
+    animation-play-state: running;
+  }
+  .retourAileDroite3{
+    display: block!important;
+    animation: parsDroite 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation-play-state: running;
+  }
+
+   @keyframes parsGauche {
+     0%{
+       transform: translateX(550px);
+
+       }
+
+     100%{
+        transform: translateX(0px);
+
+      }
+    }
+    @keyframes parsDroite {
+      0%{
+        transform: translateX(0px);
+        opacity: 1;
+        }
+
+       100%{
+         transform: translateX(550px);
+        opacity: 0;
+
+       }
+    }
+
+#villeScore{
+  font-size: 15px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+#scoreVille{
+  font-size: 15px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+#resultatScoreVille{
+  font-size: 15px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+#resultatVilleScore{
+  font-size: 15px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+#panneauDroit{
+  width: 551px;
+  height: 58px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top:881px;
+  left:1011px;
+}
+#panneauAileDroite{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:0px;
+  display: none;
+  z-index: -1;
+}
+.deploiementPanneau{
+  display: block!important;
+  animation: descente 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-play-state: running;
+  animation-delay: 0.5s;
+}
+.remballePanneau{
+  display: block!important;
+  animation: remontes 0.25s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation-play-state: running;
+}
+@keyframes remontes {
+  0% {
+
+              transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+
+
+              transform: translateY(-53px);
+    opacity: 0;
+  }
+}
+
+@keyframes descente {
+  0% {
+
+              transform: translateY(-53px);
+    opacity: 0;
+  }
+  100% {
+
+
+              transform: translateY(0px);
+    opacity: 1;
+  }
+}
+#panneauGauche{
+  width: 551px;
+  height: 58px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top:881px;
+  left:458px;
+}
+#panneauAileGauche{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:0px;
+  display: none;
+  z-index: -1;
+}
+#brillant{
+  position: absolute;
+  top: 15vw;
+  left: 31vw;
+  display: none;
+}
+.scale-in-center {
+  display: block!important;
+	animation: scale-in-center 1.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-delay: 2.5s;
+}
+.scale-out-center {
+	animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+/*
+ * ----------------------------------------
+ * animation scale-in-center
+ * ----------------------------------------
+ */
+
+@keyframes scale-in-center {
+  0% {
+    transform: scale(0) rotate(360deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 0;
+
+  }
+}
+
+#brillantBis{
+  position: absolute;
+  top: 15vw;
+  left: 31vw;
+  display: none;
+}
+.slide-in-blurred-left {
+  display: block!important;
+	animation: slide-in-blurred-left 5s cubic-bezier(0.645, 0.045, 0.355, 1.000) both;
+  animation-delay: 0.5s;
+}
+
+
+/**
+ * ----------------------------------------
+ * animation slide-in-blurred-left
+ * ----------------------------------------
+ */
+
+@keyframes slide-in-blurred-left {
+  0% {
+    -webkit-transform: translateX(0px) scaleX(2.5) scaleY(0.2);
+            transform: translateX(-1px) scaleX(2.5) scaleY(0.2);
+    -webkit-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+            transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
+  100%{
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+            transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,522 @@
+body{
+  max-width: 1920px;
+  max-height: 1080px;
+}
+#circle{
+  width: 152px;
+  position:absolute;
+  top:50px;
+  left:544px;
+  z-index: 9;
+  display: none;
+}
+#rectDroite{
+  position: absolute;
+  top:77px;
+  right: 900px;
+  z-index: 2;
+  overflow: hidden;
+  width: 353px;
+  height:97px;
+}
+#aileDroite{
+  width:339px;
+  position: absolute;
+  left:12px;
+  top:3px;
+  display: none;
+  z-index: 1;
+}
+#composition{
+  width:339px;
+  position: absolute;
+  left:12px;
+  top:3px;
+  display: none;
+  z-index: 1;
+}
+#rectTeam{
+  position: absolute;
+  top:308px;
+  left:773px;
+  z-index: 2;
+  overflow: hidden;
+  width  : 384px;
+  height : 334px;
+}
+#RECTANGLE{
+  width: 950px;
+  position: absolute;
+  top: 246px;
+  left: 475px;
+}
+#ROND{
+  position:absolute;
+  top:139px;
+  left:750px;
+  width:409px;
+}
+#DEMI_RECTANGLE{
+  position: absolute;
+  top: 470px;
+  left: 620px;
+  width: 666px;
+}
+#ARC{
+  position: absolute;
+  top: 448px;
+  left: 810px;
+  width: 285px;
+}
+#DOUBLE_DEMI{
+  position: absolute;
+  top: 579px;
+  left: 777px;
+  width: 353px;
+}
+.maillots{
+  width: 80px;
+  position: absolute;
+  display: none;
+}
+#maillot1{
+  top: 205px;
+  left: 912px;
+}
+#maillot2{
+  top: 322px;
+  left: 912px;
+}
+#maillot3{
+  top: 322px;
+  left: 1120px;
+}
+#maillot4{
+  top: 322px;
+  left: 706px;
+}
+#maillot5{
+  top: 400px;
+  left: 1027px;
+}
+#maillot6{
+  top: 400px;
+  left: 795px;
+}
+#maillot7{
+  top: 528px;
+  left: 1186px;
+}
+#maillot8{
+  top: 528px;
+  left: 1023px;
+}
+#maillot9{
+  top: 528px;
+  left: 806px;
+}
+#maillot10{
+  top: 528px;
+  left: 640px;
+}
+#maillot11{
+  top: 615px;
+  left: 912px;
+}
+.nomsNumerosJoueurs{
+  position: absolute;
+  font-size: 0.75em;
+  font-family: Arial;
+  display: none;
+}
+#nomNumeroJoueur1{
+  top:209px;
+  left:934px;
+}
+#nomNumeroJoueur2{
+  top:325px;
+  left:1136px;
+}
+#nomNumeroJoueur3{
+  top:325px;
+  left:928px;
+}
+#nomNumeroJoueur4{
+  top:325px;
+  left:717px;
+}
+#nomNumeroJoueur5{
+  top:397px;
+  left:1047px;
+}
+#nomNumeroJoueur6{
+  top:397px;
+  left:814px;
+}
+#nomNumeroJoueur7{
+  top:518px;
+  left:1204px;
+}
+#nomNumeroJoueur8{
+  top:518px;
+  left:1015px;
+}
+#nomNumeroJoueur9{
+  top:518px;
+  left:823px;
+}
+#nomNumeroJoueur10{
+  top:518px;
+  left:640px;
+}
+#nomNumeroJoueur11{
+  top:614px;
+  left:924px;
+}
+polygon, ellipse, polyline, .dls-1, .dls-2 {
+  /*stroke-dasharray:1923;*/
+  opacity:10;
+  display: none;
+}
+image{
+  display: none;
+}
+
+
+
+.debutDessin{
+  display: block!important;
+  animation: animate 0.25s cubic-bezier(0,0.23,1,.1);
+  animation-play-state: running;
+}
+.finDessin{
+  display:none;
+  animation-name: enlevesledessin;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.allumesLaLumiere{
+  display: block!important;
+  animation-play-state: running;
+	animation: effetNeon 0.5s linear both;
+}
+.eteinsLaLumiere{
+  display: none;
+  animation-play-state: running;
+	animation: extinction 1s linear both;
+}
+.apparitionJoueur{
+  display: block!important;
+  animation: apparais 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-delay: 1.5s;
+  animation-play-state: running;
+}
+.disparitionJoueur{
+  display:none;
+  animation-name: disparais;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.apparitionNom{
+  display: block!important;
+	animation: apparitionText 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 1.5s;
+  animation-play-state: running;
+}
+.disparitionNom{
+  display:none;
+  animation-name: disparais;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+
+/**
+ * ----------------------------------------
+ * animation apparitionText
+ * ----------------------------------------
+ */
+
+@keyframes apparitionText {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
+/**
+ * ----------------------------------------
+ * @animation traçage dessin
+ * ----------------------------------------
+ */
+@keyframes animate {
+  0% {
+    opacity:0;
+    fill: none;
+    stroke-dashoffset: 1923;
+  }
+  30% {
+    opacity: 10;
+    fill: none;
+    stroke-dashoffset: 1923;
+  }
+  90% {
+    fill: rgba(255,255,255,0);
+  }
+  100% {
+    opacity: 10;
+    fill: rgba(255,255,255,1);
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes enlevesledessin {
+  0% {
+    opacity:10;
+    fill: none;
+    stroke-dashoffset: 0;
+  }
+  30% {
+    opacity: 10;
+    fill: none;
+    stroke-dashoffset: 0;
+  }
+  90% {
+    fill: rgba(255,255,255,0);
+  }
+  100% {
+    opacity: 0;
+    fill: rgba(255,255,255,1);
+    stroke-dashoffset: 0;
+  }
+}
+/**
+ * ----------------------------------------
+ * @animation effetNeon
+ * ----------------------------------------
+ */
+
+@keyframes effetNeon {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  10.1% {
+    opacity: 1;
+  }
+  10.2% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  20.1% {
+    opacity: 1;
+  }
+  20.6% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  30.1% {
+    opacity: 1;
+  }
+  30.5% {
+    opacity: 1;
+  }
+  30.6% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 0;
+  }
+  45.1% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  55.1% {
+    opacity: 0;
+  }
+  57% {
+    opacity: 0;
+  }
+  57.1% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  60.1% {
+    opacity: 0;
+  }
+  65% {
+    opacity: 0;
+  }
+  65.1% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  75.1% {
+    opacity: 0;
+  }
+  77% {
+    opacity: 0;
+  }
+  77.1% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  85.1% {
+    opacity: 0;
+  }
+  86% {
+    opacity: 0;
+  }
+  86.1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/**
+ * ----------------------------------------
+ * animation tourne et retourne
+ * ----------------------------------------
+ */
+@keyframes tournes {
+  0%{
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  30%{
+    opacity:1;
+  }
+  100% {
+     transform: rotate(360deg);
+      opacity: 1;
+   }
+}
+@keyframes retournes {
+  0% {
+    transform: rotate(0deg);
+    opacity: 2;
+  }
+  50%{
+    opacity:1;
+  }
+100% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+}
+/**
+ * -----------------------------------------------------------
+ * animation apparition apparition/disparition aile droite
+ * -----------------------------------------------------------
+ */
+@keyframes toRight {
+  0%{
+    transform: translateX(-355px);
+
+    }
+
+  100%{
+     transform: translateX(0px);
+
+   }
+ }
+ @keyframes toLeft {
+   0%{
+     transform: translateX(0px);
+     opacity: 1;
+     }
+
+    100%{
+      transform: translateX(-358px);
+     opacity: 0;
+
+    }
+ }
+/**
+ * ----------------------------------------
+ * animation apparition joueurs
+ * ----------------------------------------
+ */
+@keyframes apparais {
+  0% {
+    transform: rotateY(80deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+
+}
+@keyframes disparais {
+  0% {
+    display: block;
+    opacity: 1;
+  }
+100% {
+    display: block;
+    opacity: 0;
+
+  }
+}
+@keyframes extinction {
+  0%{
+    opacity:1;
+  }
+  50%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+  }
+}
+/**
+ * ----------------------------------------------------------------
+ * animation apparition descente/montée du rectangle de compo
+ * ----------------------------------------------------------------
+ */
+@keyframes descends {
+  0% {
+                transform: translateY(-300px);
+  }
+  100% {
+                transform: translateY(0px);
+  }
+}
+@keyframes remontes {
+
+  0% {
+              transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+              transform: translateY(-1000px);
+    opacity: 0;
+  }
+}

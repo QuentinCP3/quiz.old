@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/partie.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/css/loading-bar.css"/>
+	  <title>Mode classique</title>
+</head>
+<body>
+
+	<div class="col-md-10" style="margin: 0 auto;">
+		<p id="titre">PARTIE CLASSIQUE</p>
+		<div class="row">
+			<div class="col-md-2">
+				<div id="tablejoueurs"></div>
+			</div>
+
+			<div class="col-md-8">
+				<div class="card" id="question">
+					<div class="divAcc card-body">
+						<!--<p style="font-size: 20px">QUESTION</p>-->
+						<div style="height:200px">
+							<p id="msginfoquestion"></p>
+							<p id="msginfopoints"></p>
+							<p id="msginforeponse"></p>
+						</div>
+						<div id="progressbar">
+							<div id="filledProgressBar" style="width: 100%"></div>
+						</div>
+					</div>
+				</div>
+				<br/><br/>
+
+				<div class="row" id="line1jeu">
+					<button id="a1" class="col-md-5 btn btn-light" disabled><div id="rep1" onclick="response(this.id, this.innerHTML)"><p class="repSize"></p><a href="#"></a></div></button>
+					<div class="espace"></div>
+					<button id="a2" class="col-md-5 btn btn-light" disabled><div id="rep2" onclick="response(this.id, this.innerHTML)"><p class="repSize"></p><a href="#"></a></div></button>
+				</div><br/>
+
+				<div class="row" id="line2jeu">
+					<button id="a3" class="col-md-5 btn btn-light" disabled><div id="rep3" onclick="response(this.id, this.innerHTML)"><p class="repSize"></p><a href="#"></a></div></button>
+					<div class="espace"></div>
+					<button id="a4" class="col-md-5 btn btn-light" disabled><div id="rep4" onclick="response(this.id, this.innerHTML)"><p class="repSize"></p><a href="#"></a></div></button>
+				</div>
+
+				<div id="chrono"></div>
+			</div>
+
+			<section class="chat">
+				<div class="card" id="chat">
+					<div class="divAcc card-body">
+					</div>
+				</div>
+				<form action="/" method="post" id="formulaire_chat">
+						<input type="text" name="message" id="message" placeholder="Votre message..." size="500000" autofocus required/><br/>
+						<input class="form-control btn-success" type="submit" id="envoi_message" value="Envoyer" />
+				</form>
+			</section>
+
+			<!--<div data-preset="stripe" class="ldBar label-center" data-value="35"></div>-->
+
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/loading-bar.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/easytimer.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		//var socket = io.connect('http://192.168.10.63:3000');
+		var socket = io.connect('http://localhost:3000');
+		//var socket = io.connect('http://192.168.0.55:3000');
+
+	</script>
+
+	<script type = "text/javascript">
+	    window.onload = function () {
+	        document.onkeydown = function (e) {
+	            return (e.which || e.keyCode) != 116;
+	        };
+	    }
+	</script>
+
+	<script>
+		var id_partie = <%= partie[0].id_partie %>;
+		var nombre_joueurs = <%= nombre_joueurs %>;
+		var numero_joueur = <%= nombre_joueurs %>;
+		var displayed_players = 0;
+		var onceTimer = 0;
+
+		var idQuestion = new Array();
+		var questionNumber = compteur();
+
+ 		function listJoueurs() {
+
+			console.log(nombre_joueurs);
+			console.log(id_partie);
+			socket.emit('listJoueurs', id_partie, nombre_joueurs);
+		}
+
+		console.log("DISPLAYED PLAYER");
+		console.log(nombre_joueurs);
+		if (nombre_joueurs < 4) {
+			setInterval(listJoueurs, 1000);
+		} else {
+			listJoueurs();
+		}
+
+		var chronoStarted = false;
+		socket.on('displayJoueurs', function(membres, nombre_joueurs) {
+			console.log('DISPLAY JOUEURS');
+			let monTBody = $('#tablejoueurs');
+			var html = '';
+			var j = membres.length - 1;
+			var partie = membres[0].id_partie;
+			displayed_players = 0;
+			for (i = 0; i < membres.length; i++) {
+				var nom = membres[j].nom;
+				var score = membres[j].score;
+				html = html + '<div style="border:2px solid blue; background-color: rgba(66, 134, 244, 0.90); color: white"><p style="margin-bottom:0">'+nom+'<br/>'+score+' points</div><br/>';
+				j--;
+				displayed_players++;
+				//console.log(html);
+			}
+			monTBody.html('');
+			monTBody.html(html);
+			console.log(displayed_players);
+
+			var progressbarfill = document.getElementById('filledProgressBar');
+			var progressbar = document.getElementById('progressbar');
+
+			if (displayed_players == 4 && chronoStarted == false) {
+				console.log('DISPLAY JOUEURS');
+
+				if (progressbar.style.visibility == "hidden") {
+					progressbar.style.visibility = "visible";
+				}
+				var once = 0;
+				if (once == 0) {
+					socket.emit('timerPreGame', id_partie);
+					chronoStarted = true;
+					$('#msginfoquestion').html('Préparez-vous !');
+				}
+			}
+		});
+
+		socket.on('displayTimer', function(chrono, chronoTenths, timerMode) {
+			console.log(timerMode);
+			if (timerMode == "preGame") {
+				var progressbarfill = document.getElementById('filledProgressBar');
+				var progressbar = document.getElementById('progressbar');
+				var chronoMap = parseInt(chronoTenths * (2/3));
+				progressbarfill.style.width = chronoMap+"%";
+				$('#chrono').html(chrono);
+				if (chronoMap == 0) {
+					if (onceTimer == 0) {
+						onceTimer++;
+						progressbar.style.display = "none";
+						socket.emit('getQuestionsId', id_partie);
+					}
+				}
+			}
+		});
+
+		function compteur() {
+			var compteurPrive = 0;
+			function changeValeur(val) {
+				compteurPrive += val;
+			}
+			return {
+				increment: function() {
+					changeValeur(1);
+				},
+				valeur: function() {
+					return compteurPrive;
+				}
+			};
+		}
+
+		socket.on('questions', function(questions) {
+			console.log('QUESTIONS');
+			console.log(questions);
+			for (var i = 0; i < questions.length; i++) {
+				idQuestion[i] = questions[i]['id_question'];
+				console.log(idQuestion[i]);
+			}
+			idQuestion[questionNumber.valeur()] = questions[questionNumber.valeur()]['id_question'];
+			console.log(idQuestion[questionNumber.valeur()]);
+			socket.emit('getQuestion', idQuestion[questionNumber.valeur()]);
+		});
+
+		socket.on('displayQuestion', function(question) {
+			if (questionNumber.valeur() < 10) {
+				setTimeout(function () {
+					onceTimer = 0;
+					console.log(questionNumber.valeur());
+					console.log(question);
+					console.log(question.intitule);
+					$('#rep1').html(question.rep_1);
+					$('#rep2').html(question.rep_2);
+					$('#rep3').html(question.rep_3);
+					$('#rep4').html(question.rep_4);
+					var btnA = document.getElementById('a1');
+					var btnB= document.getElementById('a2');
+					var btnC = document.getElementById('a3');
+					var btnD = document.getElementById('a4');
+					btnA.disabled = false;
+					btnB.disabled = false;
+					btnC.disabled = false;
+					btnD.disabled = false;
+					btnA.style.background = 'white';
+					btnB.style.background = 'white';
+					btnC.style.background = 'white';
+					btnD.style.background = 'white';
+					$('#msginfoquestion').html(question.intitule);
+					questionNumber.increment();
+					socket.emit('timerQuestion', id_partie, question.id_question);
+					var audioQuestion = new Audio('/mp3/vertical.mp3');
+					audioQuestion.play();
+					audioQuestion.addEventListener("canplaythrough", function () {
+									setTimeout(function(){
+											audioQuestion.pause();
+											audioQuestion.currentTime = 0;
+									},
+									10000);
+					}, false);
+				}, 3000);
+			}
+		});
+
+		var onceTimer = 0;
+		var chronometre;
+		var repondu = false;
+		socket.on('displayTimerQuestion', function(chrono, chronoTenths, timerMode) {
+			console.log(timerMode);
+			if (timerMode == "question") {
+				chronoTenths = chronoTenths;
+				var progressbarfill = document.getElementById('filledProgressBar');
+				var progressbar = document.getElementById('progressbar');
+				var chronoMap = parseInt(chronoTenths * (2/3));
+				chronometre = chronoTenths;
+				progressbarfill.style.width = chronoMap+"%";
+				$('#chrono').html(chrono);
+				if (chronoMap == 0) {
+					if (onceTimer == 0) {
+						onceTimer++;
+						progressbar.style.display = "none";
+						if (repondu == false) {
+							console.log('NO ANSWER');
+							var reponse = 0;
+							var userId = <%= user.id %>;
+							var btnA = document.getElementById('a1');
+							var btnB= document.getElementById('a2');
+							var btnC = document.getElementById('a3');
+							var btnD = document.getElementById('a4');
+							btnA.disabled = true;
+							btnB.disabled = true;
+							btnC.disabled = true;
+							btnD.disabled = true;
+							socket.emit('no_reponse', id_partie, idQuestion[questionNumber.valeur()-1], reponse, numero_joueur, questionNumber.valeur(), userId);
+						}
+					}
+				}
+			}
+		});
+
+		function response(id, rep) {
+			console.log("ANSWERED");
+			console.log(repondu);
+			if (repondu == false) {
+				repondu = true;
+				var reponse;
+				console.log(id);
+				if (id == "rep1") {
+					id = "a1";
+					reponse = 1;
+				} else if (id == "rep2") {
+					id = "a2";
+					reponse = 2;
+				} else if (id == "rep3") {
+					id = "a3";
+					reponse = 3;
+				} else if (id == "rep4") {
+					id = "a4";
+					reponse = 4;
+				}
+				document.getElementById(id).style.background = 'grey';
+				var btnA = document.getElementById('a1');
+				var btnB= document.getElementById('a2');
+				var btnC = document.getElementById('a3');
+				var btnD = document.getElementById('a4');
+				btnA.disabled = true;
+				btnB.disabled = true;
+				btnC.disabled = true;
+				btnD.disabled = true;
+				var userId = <%= user.id %>;
+				console.log("ID PARTIE"+id_partie);
+				console.log("id_numero_question"+idQuestion[questionNumber.valeur()-1]);
+				console.log("CHRONO"+chronometre);
+				console.log("REPONSE N°"+reponse);
+				console.log("NUMERO JOUEURS"+numero_joueur);
+				console.log("QUESTION NUMERO"+questionNumber.valeur());
+				console.log("REPONSE"+rep);
+				console.log("ID USER"+userId);
+				socket.emit('reponse', id_partie, idQuestion[questionNumber.valeur()-1], chronometre, reponse, numero_joueur, questionNumber.valeur(), rep, userId);
+			}
+		}
+
+		socket.on('treat_answer', function(numeroReponse, resultat, points, reponse, bonne_reponse) {
+			console.log('TREAT_ANSWER');
+			console.log(numeroReponse);
+			console.log(resultat);
+			console.log(points);
+			console.log(reponse);
+			console.log(bonne_reponse);
+			var chronometreLeft = chronometre * 100;
+			console.log(chronometreLeft);
+			setTimeout(function() {
+				if (resultat == true) {
+					document.getElementById('a'+numeroReponse).style.background = "green";
+					$('#msginfoquestion').html('Félicitations, vous remportez :');
+					$('#msginfopoints').html(points+' points');
+					var audio = new Audio('/mp3/bravo.mp3');
+					audio.play();
+				} else {
+					if (document.getElementById('rep1').innerHTML == bonne_reponse) {
+						console.log("réponse 1");
+						if (numeroReponse == 0) {
+							var wrongAnswer = document.getElementById('a1');
+							wrongAnswer.style.background = "red";
+						} else {
+							var trueAnswer = document.getElementById('a1');
+							trueAnswer.style.background = "green";
+						}
+					} else if (document.getElementById('rep2').innerHTML == bonne_reponse) {
+						console.log("réponse 2");
+						if (numeroReponse == 0) {
+							var wrongAnswer = document.getElementById('a2');
+							wrongAnswer.style.background = "red";
+						} else {
+							var trueAnswer = document.getElementById('a2');
+							trueAnswer.style.background = "green";
+						}
+					} else if (document.getElementById('rep3').innerHTML == bonne_reponse) {
+						console.log("réponse 3");
+						if (numeroReponse == 0) {
+							var wrongAnswer = document.getElementById('a3');
+							wrongAnswer.style.background = "red";
+						} else {
+							var trueAnswer = document.getElementById('a3');
+							trueAnswer.style.background = "green";
+						}
+					} else if (document.getElementById('rep4').innerHTML == bonne_reponse) {
+						console.log("réponse 4");
+						if (numeroReponse == 0) {
+							var wrongAnswer = document.getElementById('a4');
+							wrongAnswer.style.background = "red";
+						} else {
+							var trueAnswer = document.getElementById('a4');
+							trueAnswer.style.background = "green";
+						}
+					}
+					if (numeroReponse != 0) {
+						var wrongAnswer = document.getElementById('a'+numeroReponse);
+						wrongAnswer.style.background = "red";
+					}
+				}
+				listJoueurs();
+				entreDeuxQuestions();
+				repondu = false;
+			}, chronometreLeft);
+		});
+
+		function entreDeuxQuestions() {
+			setTimeout(function() {
+				$('#msginfoquestion').html('Préparez-vous pour la question suivante !');
+				$('#msginfopoints').html('');
+				$('#msginforeponse').html('');
+			}, 2500);
+			setTimeout(function() {
+				console.log("ID QUESTION ");
+				console.log(idQuestion[questionNumber.valeur()]);
+				if (idQuestion[questionNumber.valeur()] == undefined) {
+					finPartie();
+				} else {
+					socket.emit('getQuestion', idQuestion[questionNumber.valeur()]);
+				}
+			}, 5000);
+		}
+
+		function finPartie() {
+			$('#msginfoquestion').html('Fin de partie !');
+			$('#rep1').html('');
+			$('#rep2').html('');
+			$('#rep3').html('');
+			$('#rep4').html('');
+			var numJoueur = <%= nombre_joueurs %>;
+			var id_partie = <%= partie[0].id_partie %>;
+			socket.emit('Get_rank',numJoueur, id_partie);
+		}
+
+		socket.on('Display_rank', function(numJoueur, id_partie, partieAccueille) {
+			console.log(partieAccueille);
+			console.log(numJoueur);
+			console.log(partieAccueille.length);
+			var id = 0;
+			var rang = 0;
+			for (id = 0; id < partieAccueille.length; id++) {
+				console.log(partieAccueille[id].n_joueur);
+				if (partieAccueille[id].n_joueur == numJoueur) {
+					rang = id + 1;
+					console.log(rang);
+					if (rang == 1) {
+						console.log("A");
+						$('#msginfopoints').html('Félicitations ! Vous finissez '+rang+'er !');
+						$('#msginforeponse').html('<a href="/jouer" class="btn btn-success">Quitter</button>');
+					} else if (rang == 2) {
+						console.log("B");
+						$('#msginfopoints').html('Félicitations ! Vous finissez '+rang+'ème !');
+						$('#msginforeponse').html('<a href="/jouer" class="btn btn-primary">Quitter</button>');
+					} else {
+						console.log("C");
+						$('#msginfopoints').html('Vous finissez '+rang+'ème ! Vous pouvez vous améliorer !');
+						$('#msginforeponse').html('<a href="/jouer" class="btn btn-danger">Quitter</button>');
+					}
+				}
+			}
+		});
+
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <title>Jouer</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/jouer.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.min.css">
+</head>
+<body>
+
+    <% include partiel/navbar.ejs %>
+    <div class="col-lg-12" style="margin: auto">
+      <br/>
+      <form action="/addQuestion" method="post">
+        <div class="form-group">
+          <label for="question">Question</label>
+          <input type="text" class="form-control" name="question" id="question" placeholder="Question">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="repA">Réponse A</label>
+            <input type="text" class="form-control" id="repA" name="repA" placeholder="Rep. A">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="repB">Réponse B</label>
+            <input type="text" class="form-control" id="repB" name="repB" placeholder="Rep. B">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="repC">Réponse C</label>
+            <input type="text" class="form-control" id="repC" name="repC" placeholder="Rep. C">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="repD">Réponse D</label>
+            <input type="text" class="form-control" id="repD" name="repD" placeholder="Rep. D">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="bonneRep">Bonne réponse</label>
+            <input type="text" class="form-control" id="bonneRep" name="bonneRep" placeholder="Bonne réponse">
+          </div>
+          <div class="form-group col-md-3">
+            <label class="mr-sm-2" for="categorie">Catégorie</label>
+            <select class="custom-select mr-sm-2" id="categorie" name="categorie">
+              <option value="1">Sports</option>
+              <option value="2">Arts et littérature</option>
+              <option value="3">Cinéma et séries</option>
+              <option value="4">Musique</option>
+              <option value="5">Histoire</option>
+              <option value="6">Géographie</option>
+              <option value="7">Sciences et nature</option>
+              <option value="8">Technologie</option>
+              <option value="9">Economie et société</option>
+            </select>
+          </div>
+          <div class="form-group col-md-3">
+            <label class="mr-sm-2" for="difficulte">Difficulté</label>
+            <select class="custom-select mr-sm-2" id="difficulte" name="difficulte">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="commentaire">Commentaire</label>
+          <input type="text" class="form-control" name="commentaire" id="commentaire" placeholder="Commentaire">
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+      </form>
+
+    </div>
+<% include partiel/footer.ejs %>
+
+<script src="/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<script type="text/javascript">
+
+  //var socket = io.connect('http://192.168.10.63:3000');
+  var socket = io.connect('http://localhost:3000');
+  //var socket = io.connect('http://192.168.0.55:3000');
+
+  socket.emit('switchRoom', {room: 'Ajout question'});
+</script>
+
+<script>
+    $(document).ready( function () {
+    } );
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+
+#rect{
+  width:222px;
+  position: absolute;
+  left:4px;
+  top:11px;
+  display: none;
+  z-index: 3;
+}
+
+.rectblanc{
+  position: absolute;
+  width: 227px;
+  height: 124px;
+  top:10px;
+  right: 1597px;
+  z-index: 4;
+  overflow: hidden;
+}
+#circle{
+  width: 127px;
+  position:absolute;
+  left:1px;
+  z-index: 6;
+  display: none;
+
+}
+#cache{
+  width:127px;
+  position:absolute;
+  z-index: 5;
+  left:0px;
+  top:8px;
+  display: none;
+
+}
+.cacheAnime{
+  display: block!important;
+  animation-name: pars;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.animDebut{
+  display: block!important;
+  animation-name: tournes;
+  animation-duration:1.5s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.animStart{
+  display: block!important;
+  animation-name: versdroite;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.finAnim{
+  display:block!important;
+  animation: retournes 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+.animFinish{
+  display: block!important;
+  animation: versgauche 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+.cacheAnimFin{
+  display:none;
+  animation-name: disparais;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+#group{
+  animation: fade-out 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: paused;
+}
+#play{
+  position:absolute;
+  top:10vw;
+}
+#stop{
+  position:absolute;
+  top:12vw;
+}
+#ligne1{
+  font-size: 100px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+#ligne2{
+  font-size: 100px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+#ligne3{
+  font-size: 100px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+@keyframes versdroite {
+  0%{
+    transform: translateX(-305px);
+
+    }
+  50%{
+     transform: translateX(0px);
+
+   }
+   100%{
+     transform: translateX(0px);
+
+
+   }
+  /* 75%{
+     transform: translateX(0px);
+   }
+  100%{
+     transform: translateX(-305px);
+   }*/
+ }
+ @keyframes tournes {
+   0%{
+     transform: rotate(0px);
+
+   }
+   100% {
+      transform: rotate(720deg);
+
+    }
+  /*  50%{
+      transform: rotate(0px);
+    }
+    100% {
+       transform: rotate(-360deg);
+     }*/
+  }
+
+
+  /**
+   * ----------------------------------------
+   * animation retournes
+   * ----------------------------------------
+   */
+
+  @keyframes retournes {
+    0% {
+      transform: rotate(0deg);
+      opacity: 1;
+    }
+  100% {
+      transform: rotate(-1090deg);
+      opacity: 0;
+    }
+  }
+  @keyframes versgauche {
+    0%{
+      transform: translateX(0px);
+      opacity: 1;
+      }
+    50%{
+       transform: translateX(-305px);
+
+     }
+    100%{
+       transform: translateX(-305px);
+        opacity: 0;
+     }
+  }
+  @keyframes pars {
+    0%{
+      transform: translateX(0px)
+       rotate(0deg) scale(1);
+       z-index: 7;
+      }
+
+    25%{
+       transform: translateX(325px) rotate(1090deg);
+       }
+
+    50%{
+      transform:  translateX(325px) rotate(1090deg) scale(0.85);
+      z-index: 2;
+    }
+    75%{
+        transform:  translateX(0px)
+                    rotate(-720deg)
+                    scale(0.85);
+        z-index: 2;
+      }
+    100%{
+        transform: translateX(0px);
+        z-index: 2;
+
+    }
+  }
+  @keyframes disparais {
+    0% {
+      display: block;
+      opacity: 1;
+    }
+  100% {
+      display: block;
+      opacity: 0;
+
+    }
+  }

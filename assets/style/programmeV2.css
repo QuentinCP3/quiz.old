@@ -1,0 +1,448 @@
+body{
+  max-width: 1920px;
+  max-height: 1080px;
+  background: url("img/Terrain-de-foot.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  overflow: hidden;
+}
+#circle{
+  width: 135px;
+  position: absolute;
+  top:30px;
+  left: 159px;
+  display: none;
+  z-index: 1;
+}
+.animDebut{
+  display: block!important;
+  animation-name: tournes;
+  animation-duration:0.4s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.finAnim{
+  display:block!important;
+  animation: retournes 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+  animation-delay: 0.4s;
+}
+@keyframes tournes {
+  0%{
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  30%{
+    opacity:1;
+  }
+  100% {
+     transform: rotate(360deg);
+      opacity: 1;
+   }
+}
+@-webkit-keyframes tournes {
+ 0%{
+   transform: rotate(0deg);
+   opacity: 0;
+ }
+ 30%{
+   opacity:1;
+ }
+ 100% {
+    transform: rotate(360deg);
+     opacity: 1;
+  }
+}
+@keyframes retournes {
+  0% {
+    transform: rotate(0deg);
+    opacity: 2;
+  }
+  50%{
+    opacity:1;
+  }
+100% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes retournes {
+  0% {
+    transform: rotate(0deg);
+    opacity: 2;
+  }
+  50%{
+    opacity:1;
+  }
+100% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+}
+#ligne2{
+  font-size: 1.5em;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+  z-index: 1;
+}
+#rectDroite2{
+  width: 2000px;
+  height: 166px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top:0px;
+  left:224px;
+}
+#aileDroite2{
+  width:2000px;
+  position: absolute;
+  left:0px;
+  top:-4px;
+  display: none;
+  z-index: -1;
+}
+#basket{
+  position:absolute;
+  top: 97px;
+  left: 287px;
+  width:262px;
+  display: none;
+}
+#rugby{
+  position:absolute;
+  top: 326px;
+  left: 287px;
+  width:262px;
+  display: none;
+}
+#handball{
+  position:absolute;
+  top: 563px;
+  left: 287px;
+  width:262px;
+  display: none;
+}
+#visiteur1{
+  position: absolute;
+  top: 50px;
+  left: 1100px;
+  width: 160px;
+  display: none;
+}
+#visiteur2{
+  position: absolute;
+  top: 281px;
+  left: 1100px;
+  width: 160px;
+  display: none;
+}
+#visiteur3{
+  position: absolute;
+  top: 511px;
+  left: 1100px;
+  width: 160px;
+  display: none;
+}
+.programme{
+  font-size: 2em;
+  font-family: Arial;
+  position: absolute;
+  color: white;
+}
+.flip-in-ver-left {
+  display: block!important;
+	-webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+          animation-delay: 1s;
+}
+
+/**
+ * ----------------------------------------
+ * animation flip-in-ver-left
+ * ----------------------------------------
+ */
+@-webkit-keyframes flip-in-ver-left {
+  0% {
+    -webkit-transform: rotateY(80deg);
+            transform: rotateY(80deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    opacity: 1;
+  }
+}
+@keyframes flip-in-ver-left {
+  0% {
+    -webkit-transform: rotateY(80deg);
+            transform: rotateY(80deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
+#match1{
+  top: 11vw;
+  left:26vw;
+  display: none;
+}
+#match2{
+  top: 23vw;
+  left:26vw;
+  display: none;
+}
+#match3{
+  top: 35vw;
+  left:26vw;
+  display: none;
+}
+.date{
+  font-size: 1.5em;
+  font-family: Arial;
+  position: absolute;
+  color: white;
+}
+#date1{
+  top:12vw;
+  left: 44vw;
+  display: none;
+}
+#date2{
+  top:24vw;
+  left: 44vw;
+  display: none;
+}
+#date3{
+  top:36vw;
+  left: 44vw;
+  display: none;
+}
+#VS1{
+  position: absolute;
+  width: 50px;
+  top: 18vw;
+  left: 39vw;
+  display: none;
+}
+#VS2{
+  position: absolute;
+  width: 50px;
+  top: 6vw;
+  left: 39vw;
+  display: none;
+}
+#VS3{
+  position: absolute;
+  width: 50px;
+  top: 30vw;
+  left: 39vw;
+  display: none;
+}
+.apparitionDM {
+  display: block!important;
+	-webkit-animation: apparitionDM 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: apparitionDM 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+          animation-delay: 1s
+}
+
+/**
+ * ----------------------------------------
+ * animation apparitionDM
+ * ----------------------------------------
+ */
+@-webkit-keyframes apparitionDM {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes apparitionDM {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-out {
+  display: block!important;
+	-webkit-animation: fade-out 0.25s ease-out both;
+	        animation: fade-out 0.25s ease-out both;
+}
+
+/**
+ * ----------------------------------------
+ * animation fade-out
+ * ----------------------------------------
+ */
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.deploiementAileDroite2{
+  display: block!important;
+  animation: goToRight  0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-delay: 0s;
+  animation-play-state: running;
+}
+.retourAileDroite2{
+  display: block!important;
+  animation: goToLeft 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+  animation-delay: 0s;
+}
+
+ @keyframes goToRight {
+   0%{
+     transform: translateX(-550px);
+
+     }
+
+   100%{
+      transform: translateX(0px);
+
+    }
+  }
+  @-webkit-keyframes goToRight {
+    0%{
+      transform: translateX(-550px);
+
+      }
+
+    100%{
+       transform: translateX(0px);
+
+     }
+   }
+  @keyframes goToLeft {
+    0%{
+      transform: translateX(0px);
+      opacity: 1;
+      }
+
+     100%{
+       transform: translateX(-550px);
+      opacity: 0;
+
+     }
+  }
+  @-webkit-keyframes goToLeft {
+    0%{
+      transform: translateX(0px);
+      opacity: 1;
+      }
+
+     100%{
+       transform: translateX(-550px);
+      opacity: 0;
+
+     }
+  }
+  #rect3{
+    position: absolute;
+    top: 6vw;
+    left: 12vw;
+    z-index: -2;
+    height: 817px;
+    width: 1591px;
+    overflow: hidden;
+  }
+  #compositionEquipe{
+    display: none;
+  }
+
+  @keyframes remontes {
+    0% {
+
+                transform: translateY(0px);
+      opacity: 1;
+    }
+    100% {
+
+
+                transform: translateY(-1000px);
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes remontes {
+    0% {
+
+                transform: translateY(0px);
+      opacity: 1;
+    }
+    100% {
+
+
+                transform: translateY(-1000px);
+      opacity: 0;
+    }
+  }
+  @keyframes descente {
+    0% {
+
+                transform: translateY(-1000px);
+      opacity: 0;
+    }
+    100% {
+
+
+                transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes descente {
+    0% {
+
+                transform: translateY(-1000px);
+      opacity: 0;
+    }
+    100% {
+
+
+                transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  .deploiementComposition{
+    display: block!important;
+    animation: descente 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-play-state: running;
+    animation-delay: 0.5s;
+  }
+  .remballeComposition{
+    display: block!important;
+    animation: remontes 0.25s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation-play-state: running;
+  }

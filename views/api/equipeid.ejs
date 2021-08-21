@@ -1,0 +1,10 @@
+<select name="equipenom" class="form-control" required>
+
+	<% equipes.forEach(function(equipe){ %>
+	<% if(equipe.id==lastequipe){ %>
+	<option value="<%= equipe.id %>" selected><%= equipe.nom %></option>
+	<% } else{ %>
+	<option value="<%= equipe.id %>"><%= equipe.nom %></option>
+	<% } %>
+	<% }); %>
+</select>

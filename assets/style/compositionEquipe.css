@@ -1,0 +1,192 @@
+@keyframes tournes {
+  0%{
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  30%{
+    opacity:1;
+  }
+  100% {
+     transform: rotate(360deg);
+      opacity: 1;
+   }
+}
+@keyframes retournes {
+  0% {
+    transform: rotate(0deg);
+    opacity: 2;
+  }
+  50%{
+    opacity:1;
+  }
+100% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+}
+@keyframes toRight {
+  0%{
+    transform: translateX(-355px);
+
+    }
+
+  100%{
+     transform: translateX(0px);
+
+   }
+ }
+ @keyframes toLeft {
+   0%{
+     transform: translateX(0px);
+     opacity: 1;
+     }
+
+    100%{
+      transform: translateX(-358px);
+     opacity: 0;
+
+    }
+ }
+/*
+ * ----------------------------------------
+ * animation slide-bottom
+ * ----------------------------------------
+ */
+
+@keyframes descends {
+  0% {
+                transform: translateY(-300px);
+  }
+  100% {
+                transform: translateY(0px);
+  }
+}
+
+
+/**
+ * ----------------------------------------
+ * animation slide-out-top
+ * ----------------------------------------
+ */
+@keyframes remontes {
+
+  0% {
+              transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+              transform: translateY(-1000px);
+    opacity: 0;
+  }
+}
+
+
+
+body{
+  max-width: 1920px;
+  max-height: 1080px;
+}
+#circle{
+  width: 152px;
+  position:absolute;
+  top:198px;
+  left:668px;
+  z-index: 9;
+  display: none;
+}
+#rectDroite{
+  position: absolute;
+  top:222px;
+  right: 779px;
+  z-index: 2;
+  overflow: hidden;
+  width: 353px;
+  height:97px;
+}
+#aileDroite{
+  width:339px;
+  position: absolute;
+  left:12px;
+  top:3px;
+  display: none;
+  z-index: 1;
+}
+#composition{
+  width:339px;
+  position: absolute;
+  left:12px;
+  top:3px;
+  display: none;
+  z-index: 1;
+}
+.joueur{
+  font-size: 2vw;
+  font-family: Arial;
+  fill: white;
+}
+.entraineur{
+  font-size: 2vw;
+  font-family: Arial;
+  fill: white;
+}
+.remplacant{
+  font-size: 2vw;
+  font-family: Arial;
+  fill: white;
+}
+/*--------A voir pour une question de longueur--------------------*/
+/*#rectTeam{
+  background: linear-gradient(to right, #1C6EA4 0%, #000000 100%);
+  width  : 384px;
+  height : 0px;
+  top:111px;
+  left:169px;
+  position : relative;
+}*/
+#rectTeam{
+  position: absolute;
+  top:308px;
+  left:773px;
+  z-index: 2;
+  overflow: hidden;
+  width  : 384px;
+  height : 334px;
+}
+#villeScore{
+  font-size: 70px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+.animDebut{
+  display: block!important;
+  animation-name: tournes;
+  animation-duration:0.4s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.finAnim{
+  display:block!important;
+  animation: retournes 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+.deploiementAileDroite{
+  display: block!important;
+  animation: toRight  0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+.retourAileDroite{
+  display: block!important;
+  animation: toLeft 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+.deploiementComposition{
+  display: block!important;
+  animation: descends 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-play-state: running;
+}
+.remballeComposition{
+  display: block!important;
+  animation: remontes 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation-play-state: running;
+}

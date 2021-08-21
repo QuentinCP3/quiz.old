@@ -1,0 +1,101 @@
+/*#end {
+  visibility: hidden;
+}*/
+.bouton{
+  position:absolute;
+  bottom: 48vw;
+}
+#terrain{
+  width:400px;
+  position: absolute;
+  left: 25vw;
+  opacity:0
+}
+#maillot{
+  width:81px;
+  position: absolute;
+  z-index: 999;
+  left: 41vw;
+  top:16vw;
+  opacity:0
+}
+#maillotA{
+  width:81px;
+  position: absolute;
+  z-index: 999;
+  left: 44vw;
+  top:14vw;
+  opacity:0;
+}
+#maillotB{
+  width:81px;
+  position: absolute;
+  z-index: 999;
+  left: 34vw;
+  top:14vw;
+  opacity:0;
+}
+#maillotC{
+  width:81px;
+  position: absolute;
+  z-index: 999;
+  left: 20vw;
+  top:14vw;
+  opacity:0;
+}
+#maillotD{
+  width:81px;
+  position: absolute;
+  z-index: 999;
+  left: 26vw;
+  top:14vw;
+  opacity:0;
+}
+#maillotE{
+  width:81px;
+  position: absolute;
+  z-index: 999;
+  left: 33vw;
+  top:14vw;
+  opacity:0;
+}
+#maillotF{
+  width:81px;
+  position: absolute;
+  z-index: 999;
+  left: 40vw;
+  top:14vw;
+  opacity:0;
+}
+#maillotG{
+  width:59px;
+  position: absolute;
+  z-index: 999;
+  left: 33.50vw;
+  top:10vw;
+  opacity:0;
+}
+#maillotH{
+  width:80px;
+  position: absolute;
+  z-index: 999;
+  left: 27vw;
+  top:11vw;
+  opacity:0;
+}
+#maillotI{
+  width:80px;
+  position: absolute;
+  z-index: 999;
+  left: 37vw;
+  top:11vw;
+  opacity:0;
+}
+#maillotJ{
+  width:81px;
+  position: absolute;
+  z-index: 999;
+  left: 31vw;
+  top:14vw;
+  opacity:0;
+}

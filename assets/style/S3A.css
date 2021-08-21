@@ -1,0 +1,264 @@
+body{
+  max-width: 1920px;
+  max-height: 1080px;
+  background: url("img/arbitres.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+#circle{
+  width: 100px;
+  position: absolute;
+  top:806px;
+  left: 50px;
+  display: none;
+  z-index: 1;
+}
+#cercle{
+  width: 100px;
+  position: absolute;
+  top:806px;
+  left: 670px;
+  display: none;
+  z-index: 1;
+}
+#rond{
+  width: 100px;
+  position: absolute;
+  top:806px;
+  left: 1292px;
+  display: none;
+  z-index: 1;
+}
+.animDebut{
+  display: block!important;
+  animation-name: tournes;
+  animation-duration:0.4s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.finAnim{
+  display:block!important;
+  animation: retournes 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+  animation-delay: 0.7s;
+}
+@keyframes tournes {
+  0%{
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  30%{
+    opacity:1;
+  }
+  100% {
+     transform: rotate(360deg);
+      opacity: 1;
+   }
+}
+@keyframes retournes {
+  0% {
+    transform: rotate(0deg);
+    opacity: 2;
+  }
+  50%{
+    opacity:1;
+  }
+100% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+}
+#rectDroite2{
+  width: 551px;
+  height: 121px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top:773px;
+  left:99px;
+}
+#aileDroite2{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:-4px;
+  display: none;
+  z-index: -1;
+
+}
+#rectDroite3{
+  width: 551px;
+  height: 121px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top:773px;
+  left:719px;
+}
+#aileDroite3{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:-4px;
+  display: none;
+  z-index: -1;
+
+}
+#rectDroite4{
+  width: 551px;
+  height: 121px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top:773px;
+  left:1341px;
+}
+#aileDroite4{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:-4px;
+  display: none;
+  z-index: -1;
+
+}
+.deploiementAileDroite2{
+  display: block!important;
+  animation: goToRight  0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-delay: 0.5s;
+  animation-play-state: running;
+}
+.retourAileDroite2{
+  display: block!important;
+  animation: goToLeft 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+  animation-delay: 0.5s;
+}
+
+ @keyframes goToRight {
+   0%{
+     transform: translateX(-550px);
+
+     }
+
+   100%{
+      transform: translateX(0px);
+
+    }
+  }
+  @keyframes goToLeft {
+    0%{
+      transform: translateX(0px);
+      opacity: 1;
+      }
+
+     100%{
+       transform: translateX(-550px);
+      opacity: 0;
+
+     }
+  }
+
+
+.nomPersonne{
+  font-size: 15px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+.sonDomaine{
+  font-size: 15px;
+  font-family: Arial;
+  fill: #2f5582;
+  stroke: none;
+}
+#panneauDroit{
+  width: 551px;
+  height: 58px;
+  overflow: hidden;
+  z-index: -4;
+  position: absolute;
+  top:856px;
+  left:90px;
+}
+#panneauAileDroite{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:0px;
+  display: none;
+  z-index: -1;
+}
+#panneauDroit1{
+  width: 551px;
+  height: 58px;
+  overflow: hidden;
+  z-index: -4;
+  position: absolute;
+  top:856px;
+  left:710px;
+}
+#panneauAileDroite1{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:0px;
+  display: none;
+  z-index: -1;
+}
+#panneauDroit2{
+  width: 551px;
+  height: 58px;
+  overflow: hidden;
+  z-index: -4;
+  position: absolute;
+  top:856px;
+  left:1333px;
+}
+#panneauAileDroite2{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:0px;
+  display: none;
+  z-index: -1;
+}
+.deploiementPanneau{
+  display: block!important;
+  animation: descente 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-play-state: running;
+  animation-delay: 1s;
+}
+.remballePanneau{
+  display: block!important;
+  animation: remontes 0.25s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation-play-state: running;
+}
+@keyframes remontes {
+  0% {
+
+              transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+
+
+              transform: translateY(-53px);
+    opacity: 0;
+  }
+}
+
+@keyframes descente {
+  0% {
+
+              transform: translateY(-53px);
+    opacity: 0;
+  }
+  100% {
+
+
+              transform: translateY(0px);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,278 @@
+
+body{
+  max-width: 1920px;
+  max-height: 1080px;
+}
+#circle{
+  width: 97px;
+  position:absolute;
+  top:34px;
+  left:163px;
+  z-index: 9;
+  display: none;
+}
+#rectGauche{
+  position: absolute;
+  top:61px;
+  left:1vw;
+  z-index: 4;
+  overflow: hidden;
+  width: 156px;
+  height:44px;
+}
+#aileGauche{
+  width:140px;
+  position: absolute;
+  left:12px;
+  top:3px;
+  display: none;
+  z-index: 3;
+  }
+.animDebut{
+  display: block!important;
+  animation-name: tournes;
+  animation-duration:0.4s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.finAnim{
+  display:block!important;
+  animation: retournes 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+.deploiementAileGauche{
+  display: block!important;
+  animation: versgauche 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+.retourAileGauche{
+  display: block!important;
+  animation: versdroite 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+@keyframes tournes {
+  0%{
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  30%{
+    opacity:1;
+  }
+  100% {
+     transform: rotate(360deg);
+      opacity: 1;
+   }
+}
+@keyframes retournes {
+  0% {
+    transform: rotate(0deg);
+    opacity: 2;
+  }
+  50%{
+    opacity:1;
+  }
+100% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+}
+@keyframes versgauche {
+  0%{
+    transform: translateX(355px);
+
+    }
+
+  100%{
+     transform: translateX(0px);
+
+   }
+}
+@keyframes versdroite {
+  0%{
+    transform: translateX(0px);
+    opacity: 1;
+    }
+
+   100%{
+     transform: translateX(358px);
+    opacity: 0;
+
+   }
+}
+#rectDroite{
+  position: absolute;
+  top:61px;
+  left:241px;
+  z-index: 2;
+  overflow: hidden;
+  width: 156px;
+  height:44px;
+}
+#aileDroite{
+  width:140px;
+  position: absolute;
+  left:12px;
+  top:3px;
+  display: none;
+  z-index: 1;
+}
+.deploiementAileDroite{
+  display: block!important;
+  animation: toRight  0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+.retourAileDroite{
+  display: block!important;
+  animation: toLeft 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+@keyframes toRight {
+  0%{
+    transform: translateX(-355px);
+
+    }
+
+  100%{
+     transform: translateX(0px);
+
+   }
+ }
+ @keyframes toLeft {
+   0%{
+     transform: translateX(0px);
+     opacity: 1;
+     }
+
+    100%{
+      transform: translateX(-358px);
+     opacity: 0;
+
+    }
+ }
+ #ligne2{
+   font-size: 100px;
+   font-family: Arial;
+   fill: white;
+   stroke: none;
+ }
+ .animLigne{
+   display: block!important;
+   animation: apparitionScore;
+   animation-duration: 1s;
+   animation-timing-function: ease;
+   animation-play-state: running;
+
+ }
+ .animLigneFin{
+   display:none;
+   animation-name: disparais;
+   animation-duration: 1s;
+   animation-timing-function: ease;
+   animation-play-state: running;
+ }
+ @keyframes apparitionScore {
+   0% {
+
+             transform: translateZ(80px);
+     opacity: 0;
+   }
+   50% {
+
+
+     opacity: 0;
+   }
+   85% {
+
+
+     opacity: 0;
+   }
+   100% {
+
+             transform: translateZ(0);
+     opacity: 1;
+   }
+ }
+
+   @keyframes disparais {
+     0% {
+       display: block;
+       opacity: 1;
+     }
+   100% {
+       display: block;
+       opacity: 0;
+
+     }
+   }
+ #scoreVille{
+   font-size: 70px;
+   font-family: Arial;
+   fill: white;
+   stroke: none;
+ }
+ #villeScore{
+   font-size: 70px;
+   font-family: Arial;
+   fill: white;
+   stroke: none;
+ }
+#trapeze {
+
+  width: 142px;
+  position: absolute;
+  top: 3px;
+  left: 1px;
+  height: 75px;
+  display: none;
+}
+#ligne3{
+  fill: white;
+  font-size: 3em;
+  font-family: Arial;
+}
+
+.trapezeBox{
+  position: absolute;
+  top:0px;
+  left:140px;
+  z-index: 2;
+  overflow: hidden;
+  width: 147px;
+  height:84px;
+
+}
+.remontesTrapeze{
+  display:block!important;
+  animation: remontes 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-play-state: running;
+
+}
+.descendsTrapeze{
+  display:block!important;
+  animation: descente 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-play-state: running;
+  animation-delay: 1s;
+}
+@keyframes remontes {
+  0% {
+
+    transform: translateY(0px);
+
+  }
+  100% {
+
+
+    transform: translateY(100px);
+
+  }
+}
+
+@keyframes descente {
+  0% {
+
+    transform: translateY(100px);
+    }
+  100% {
+    transform: translateY(0px);
+      }
+}

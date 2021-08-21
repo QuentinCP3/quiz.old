@@ -1,0 +1,5 @@
+<select name="equipevis" class="form-control" required>
+	<% equipes.forEach(function(equipe){ %>
+	<option value="<%= equipe.id %>"><%= equipe.nom %></option>
+	<% }); %>
+</select> 

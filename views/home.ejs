@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <title>Accueil</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.min.css">
+</head>
+<body>
+
+    <% include partiel/navbar.ejs %>
+    <div class="container">
+      <div class="welcome">
+        <p>Bonjour <b><%= user.nom %></b> (id session : <%= idsession %>)<br/>
+        Bienvenue sur Jacquizz</p>
+      </div>
+    </div>
+<% include partiel/footer.ejs %>
+
+<script src="/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<script type="text/javascript">
+
+//var socket = io.connect('http://192.168.10.63:3000');
+//var socket = io.connect('http://192.168.0.55:3000');
+var socket = io.connect('http://localhost:3000');
+  socket.emit('switchRoom', {room: 'Accueil'});
+</script>
+
+<script>
+    $(document).ready( function () {
+
+    } );
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+body{
+  max-width: 1920px;
+  max-height: 1080px;
+  background: url("img/carton.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position:top;
+  overflow: hidden;
+}
+#circle{
+  width: 100px;
+  position: absolute;
+  top:806px;
+  left: 617px;
+  display: none;
+  z-index: 1;
+}
+.animDebut{
+  display: block!important;
+  animation-name: tournes;
+  animation-duration:0.4s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.finAnim{
+  display:block!important;
+  animation: retournes 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+  animation-delay: 0.4s;
+}
+@keyframes tournes {
+  0%{
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  30%{
+    opacity:1;
+  }
+  100% {
+     transform: rotate(360deg);
+      opacity: 1;
+   }
+}
+ @-webkit-keyframes tournes {
+  0%{
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  30%{
+    opacity:1;
+  }
+  100% {
+     transform: rotate(360deg);
+      opacity: 1;
+   }
+}
+@keyframes retournes {
+  0% {
+    transform: rotate(0deg);
+    opacity: 2;
+  }
+  50%{
+    opacity:1;
+  }
+100% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes retournes {
+  0% {
+    transform: rotate(0deg);
+    opacity: 2;
+  }
+  50%{
+    opacity:1;
+  }
+100% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+}
+#rectDroite2{
+  width: 551px;
+  height: 121px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top:773px;
+  left:666px;
+}
+#aileDroite2{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:-4px;
+  display: none;
+  z-index: -1;
+
+}
+.deploiementAileDroite2{
+  display: block!important;
+  animation: goToRight  0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-delay: 0s;
+  animation-play-state: running;
+}
+.retourAileDroite2{
+  display: block!important;
+  animation: goToLeft 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+  animation-delay: 0.4s;
+}
+
+ @keyframes goToRight {
+   0%{
+     transform: translateX(-550px);
+
+     }
+
+   100%{
+      transform: translateX(0px);
+
+    }
+  }
+  @-webkit-keyframes goToRight {
+    0%{
+      transform: translateX(-550px);
+
+      }
+
+    100%{
+       transform: translateX(0px);
+
+     }
+   }
+  @keyframes goToLeft {
+    0%{
+      transform: translateX(0px);
+      opacity: 1;
+      }
+
+     100%{
+       transform: translateX(-550px);
+      opacity: 0;
+
+     }
+  }
+  @-webkit-keyframes goToLeft {
+    0%{
+      transform: translateX(0px);
+      opacity: 1;
+      }
+
+     100%{
+       transform: translateX(-550px);
+      opacity: 0;
+
+     }
+  }
+#villeScore{
+  font-size: 15px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+
+#resultatVilleScore{
+  font-size: 15px;
+  font-family: Arial;
+  fill: #233E5D;
+  stroke: none;
+}
+#panneauDroit{
+  width: 551px;
+  height: 58px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top:881px;
+  left:666px;
+}
+#panneauAileDroite{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:0px;
+  display: none;
+  z-index: -1;
+}
+.deploiementPanneau{
+  display: block!important;
+  animation: descente 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-play-state: running;
+  animation-delay: 0.5s;
+}
+.remballePanneau{
+  display: block!important;
+  animation: remontes 0.25s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation-play-state: running;
+}
+@keyframes remontes {
+  0% {
+
+              transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+
+
+              transform: translateY(-53px);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes remontes {
+  0% {
+
+              transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+
+
+              transform: translateY(-53px);
+    opacity: 0;
+  }
+}
+@keyframes descente {
+  0% {
+
+              transform: translateY(-53px);
+    opacity: 0;
+  }
+  100% {
+
+
+              transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes descente {
+  0% {
+
+              transform: translateY(-53px);
+    opacity: 0;
+  }
+  100% {
+
+
+              transform: translateY(0px);
+    opacity: 1;
+  }
+}
+#panneauGauche{
+  width: 551px;
+  height: 58px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top:881px;
+  left:458px;
+}
+#panneauAileGauche{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:0px;
+  display: none;
+  z-index: -1;
+}

@@ -1,0 +1,6 @@
+<select name="liguenom" onchange='loadTeam()' class="form-control" required>
+	<option value=""></option>
+	<% ligues.forEach(function(ligue){ %>
+	<option value="<%= ligue.id %>"><%= ligue.nom %></option>
+	<% }); %>
+</select>

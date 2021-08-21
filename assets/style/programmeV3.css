@@ -1,0 +1,136 @@
+body{
+  max-width: 1920px;
+  max-height: 1080px;
+  background: url("img/Terrain-de-foot.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  overflow: hidden;
+}
+#rectGauche{
+  width: 551px;
+  height: 121px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top:-54px;
+  left:1373px;
+}
+#aileGauche{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:-4px;
+  display: none;
+  z-index: -1;
+
+}
+#titre{
+  font-size: 15px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+#complément{
+  font-size: 15px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+#rect3{
+  position: absolute;
+  top: 44px;
+  left: 1392px;
+  z-index: -2;
+  height: 1080px;
+  width: 528px;
+  overflow: hidden;
+}
+#programme{
+  display: none;
+}
+.deploiementAileGauche{
+  display: block!important;
+  animation: parsGauche  0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-delay: 0s;
+  animation-play-state: running;
+}
+.retourAileGauche{
+  display: block!important;
+  animation: parsDroite 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+
+ @keyframes parsGauche {
+   0%{
+     transform: translateX(550px);
+
+     }
+
+   100%{
+      transform: translateX(0px);
+
+    }
+  }
+  @-webkit-keyframes parsGauche {
+    0%{
+      transform: translateX(550px);
+
+      }
+
+    100%{
+       transform: translateX(0px);
+
+     }
+   }
+  @keyframes parsDroite {
+    0%{
+      transform: translateX(0px);
+      opacity: 1;
+      }
+
+     100%{
+       transform: translateX(550px);
+      opacity: 0;
+
+     }
+  }
+  @-webkit-keyframes parsDroite {
+    0%{
+      transform: translateX(0px);
+      opacity: 1;
+      }
+
+     100%{
+       transform: translateX(550px);
+      opacity: 0;
+
+     }
+  }
+  .programme{
+    font-size: 2em;
+    font-family: Arial;
+    position: absolute;
+    fill: white;
+  }
+  #match1{
+    top: 11vw;
+    left:26vw;
+    /*display: none;*/
+  }
+  #match2{
+    top: 23vw;
+    left:26vw;
+    /*display: none;*/
+  }
+  #match3{
+    top: 35vw;
+    left:26vw;
+  /*  display: none;*/
+  }
+  .date{
+    font-size: 1.5em;
+    font-family: Arial;
+    position: absolute;
+    fill: white;
+  }

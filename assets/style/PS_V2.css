@@ -1,0 +1,246 @@
+body{
+  max-width: 1920px;
+  max-height: 1080px;
+}
+#rect{
+  width:222px;
+  position: absolute;
+  left:5px;
+  top:0px;
+  display: none;
+  z-index: 3;
+}
+
+.rectblanc{
+  position: absolute;
+  width: 227px;
+  height: 124px;
+  top:22px;
+  right: 1597px;
+  z-index: 4;
+  overflow: hidden;
+}
+#circle{
+  width: 127px;
+  position:absolute;
+  left:1px;
+  z-index: 6;
+  display: none;
+
+}
+
+.animDebut{
+  display: block!important;
+  animation-name: tournes;
+  animation-duration:1s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.animStart{
+  display: block!important;
+  animation-name: versdroite;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.finAnim{
+  display:block!important;
+  animation: retournes 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+.animFinish{
+  display: block!important;
+  animation: versgauche 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+
+.animLigne{
+  display: block!important;
+  animation: apparitionTimer;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+
+}
+.animLigneFin{
+  display:none;
+  animation-name: disparais;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+#group{
+  animation: fade-out 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: paused;
+}
+#play{
+  position:absolute;
+  top:10vw;
+}
+#stop{
+  position:absolute;
+  top:12vw;
+}
+#ligne1{
+  font-size: 100px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+#ligne2{
+  font-size: 100px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+#ligne3{
+  font-size: 100px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+@keyframes versdroite {
+  0%{
+    transform: translateX(-305px);
+
+    }
+  50%{
+     transform: translateX(0px);
+
+   }
+   100%{
+     transform: translateX(0px);
+
+
+   }
+  /* 75%{
+     transform: translateX(0px);
+   }
+  100%{
+     transform: translateX(-305px);
+   }*/
+ }
+ @keyframes tournes {
+   0%{
+     transform: rotate(0px);
+
+   }
+   100% {
+      transform: rotate(360deg);
+
+    }
+  /*  50%{
+      transform: rotate(0px);
+    }
+    100% {
+       transform: rotate(-360deg);
+     }*/
+  }
+
+
+  /**
+   * ----------------------------------------
+   * animation retournes
+   * ----------------------------------------
+   */
+
+  @keyframes retournes {
+    0% {
+      transform: rotate(0deg);
+      opacity: 1;
+    }
+    50%{
+      opacity:1;
+    }
+  100% {
+      transform: rotate(-360deg);
+      opacity: 0;
+    }
+  }
+  @keyframes versgauche {
+    0%{
+      transform: translateX(0px);
+      opacity: 1;
+      }
+    50%{
+       transform: translateX(-305px);
+
+     }
+    100%{
+       transform: translateX(-305px);
+        opacity: 0;
+     }
+  }
+  @keyframes pars {
+    0%{
+      transform: translateX(0px)
+       rotate(0deg) scale(1);
+       z-index: 7;
+       opacity: 1;
+      }
+
+    25%{
+       transform: translateX(-325px) rotate(1090deg);
+       opacity: 1;
+       }
+
+    50%{
+      transform:  translateX(-325px) rotate(1090deg) scale(0.85);
+      z-index: 2;
+      opacity: 1;
+    }
+    75%{
+        transform:  translateX(-325px)
+                    rotate(-720deg)
+                    scale(0.85);
+        z-index: 2;
+        opacity: 1;
+      }
+    100%{
+        transform: translateX(-325px);
+        z-index: 2;
+        opacity: 0;
+
+    }
+  }
+
+/**
+ * ----------------------------------------
+ * animation apparition disparition timer
+ * ----------------------------------------
+ */
+
+@keyframes apparitionTimer {
+  0% {
+
+            transform: translateZ(80px);
+    opacity: 0;
+  }
+  50% {
+
+
+    opacity: 0;
+  }
+  90% {
+
+
+    opacity: 0;
+  }
+  100% {
+
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+  @keyframes disparais {
+    0% {
+      display: block;
+      opacity: 1;
+    }
+  100% {
+      display: block;
+      opacity: 0;
+
+    }
+  }

@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+    <title>Jouer</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/jouer.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.min.css">
+</head>
+<body>
+
+    <% include partiel/navbar.ejs %>
+    <div class="container-fluid" style="margin: auto">
+       <div class="row" style="padding:2%;">
+         <div class="col-lg-2">
+           <div class="card">
+             <div id="infos">
+               <b>Solde de <%= user.nom %> :</b> <%= user.points %> pts<br/>
+               <b>Niveau :</b><br/>
+               <b>Parties restantes :</b> <%= user.parties_gratuites %>
+             </div>
+           </div>
+         </div>
+       </div>
+    </div>
+    <div class="container-fluid" style="text-align: center">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="card">
+            <div class="divAcc card-body">
+              <a href="/jouer/classique" class="card-title mb-4">Classique</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card">
+            <div class="divAcc card-body">
+              <a href="/jouer/eminem" class="card-title mb-4">Eminem</a>
+              <img id="imgAcc2" src="image/Eminem.png">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card">
+            <div class="divAcc card-body">
+              <a href="#" class="card-title mb-4"><p>Musique</p></a>
+              <img id="imgAcc3" src="image/music.png">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card">
+            <div class="card-body">
+              <a href="#" class="card-title mb-4"><p>Histoire et Géographie</p></a>
+              <img id="imgAcc4" src="image/geo.png">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="card">
+            <div class="divAcc card-body">
+              <a href="#" class="card-title mb-4"><p>Art et Littérature</p></a>
+              <img id="imgAcc2" src="image/paint.svg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="row modes">
+      </div>
+      <div id="divAcc2" class="divAcc">
+        <a href="#"><p>Art et Littérature</p></a>
+        <img id="imgAcc2" src="image/paint.svg">
+      </div>
+      <div id="divAcc3" class="divAcc">
+        <a href="#"><p>Musique</p></a>
+        <img id="imgAcc3" src="image/music.png">
+      </div>
+      <div id="divAcc4" class="divAcc">
+        <a href="#"><p>Histoire et Géographie</p></a>
+        <img id="imgAcc4" src="image/geo.png">
+      </div>
+    </div>-->
+
+<% include partiel/footer.ejs %>
+
+<script src="/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<script type="text/javascript">
+
+  //var socket = io.connect('http://192.168.10.63:3000');
+  var socket = io.connect('http://localhost:3000');
+  //var socket = io.connect('http://192.168.0.55:3000');
+
+  socket.emit('switchRoom', {room: 'Accueil'});
+</script>
+
+<script>
+    $(document).ready( function () {
+
+    } );
+</script>
+
+
+</body>
+</html>

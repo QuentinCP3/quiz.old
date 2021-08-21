@@ -1,0 +1,691 @@
+body{
+  max-width: 1920px;
+  max-height: 1080px;
+  background: url("img/Terrain-de-foot.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+#circle{
+  width: 100px;
+  position: absolute;
+  top:30px;
+  left: 647px;
+  display: none;
+  z-index: 1;
+}
+.animDebut{
+  display: block!important;
+  animation-name: tournes;
+  animation-duration:0.4s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+.finAnim{
+  display:block!important;
+  animation: retournes 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+  animation-delay: 0.4s;
+}
+@keyframes tournes {
+  0%{
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  30%{
+    opacity:1;
+  }
+  100% {
+     transform: rotate(360deg);
+      opacity: 1;
+   }
+}
+@keyframes retournes {
+  0% {
+    transform: rotate(0deg);
+    opacity: 2;
+  }
+  50%{
+    opacity:1;
+  }
+100% {
+    transform: rotate(-360deg);
+    opacity: 0;
+  }
+}
+#rectDroite1{
+  width: 130px;
+  height: 64px;
+  overflow: hidden;
+  z-index: 0;
+  position: absolute;
+  top:48px;
+  left:77px;
+}
+#aileDroite1{
+  width:130px;
+  position: absolute;
+  left:0px;
+  top:6px;
+  display: none;
+  z-index: -1;
+
+}
+#ligne2{
+  font-size: 1.5em;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+  z-index: 1;
+}
+#scoreVille{
+  font-size: 15px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+#villeScore{
+  font-size: 15px;
+  font-family: Arial;
+  fill: white;
+  stroke: none;
+}
+/*.deploiementAileDroite1{
+  display: block!important;
+  animation: toRight  0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+}
+.retourAileDroite1{
+  display: block!important;
+  animation: toLeft 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+  animation-delay: 0.8s;
+}
+@keyframes toRight {
+  0%{
+    transform: translateX(-355px);
+
+    }
+
+  100%{
+     transform: translateX(0px);
+
+   }
+ }
+ @keyframes toLeft {
+   0%{
+     transform: translateX(0px);
+     opacity: 1;
+     }
+
+    100%{
+      transform: translateX(-358px);
+     opacity: 0;
+
+    }
+ }*/
+#rectDroite2{
+  width: 551px;
+  height: 121px;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top:0px;
+  left:718px;
+}
+#aileDroite2{
+  width:547px;
+  position: absolute;
+  left:0px;
+  top:-4px;
+  display: none;
+  z-index: -1;
+
+}
+.deploiementAileDroite2{
+  display: block!important;
+  animation: goToRight  0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-delay: 0s;
+  animation-play-state: running;
+}
+.retourAileDroite2{
+  display: block!important;
+  animation: goToLeft 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-play-state: running;
+  animation-delay: 0s;
+}
+
+ @keyframes goToRight {
+   0%{
+     transform: translateX(-550px);
+
+     }
+
+   100%{
+      transform: translateX(0px);
+
+    }
+  }
+  @keyframes goToLeft {
+    0%{
+      transform: translateX(0px);
+      opacity: 1;
+      }
+
+     100%{
+       transform: translateX(-550px);
+      opacity: 0;
+
+     }
+  }
+#rect3{
+  position: absolute;
+  top: 4vw;
+  left: 38vw;
+  z-index: -2;
+  height: 620px;
+  width: 516px;
+  overflow: hidden;
+}
+#compositionEquipe{
+  display: none;
+}
+
+@keyframes remontes {
+  0% {
+
+              transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+
+
+              transform: translateY(-1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes descente {
+  0% {
+
+              transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+
+
+              transform: translateY(0px);
+    opacity: 1;
+  }
+}
+.deploiementComposition{
+  display: block!important;
+  animation: descente 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-play-state: running;
+  animation-delay: 0.5s;
+}
+.remballeComposition{
+  display: block!important;
+  animation: remontes 0.25s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation-play-state: running;
+}
+.joueurs{
+  font-size: 1vw;
+  font-family: Arial;
+  fill: white;
+}
+.entraineur{
+  font-size: 1vw;
+  font-family: Arial;
+  fill: white;
+}
+.remplacant{
+  font-size: 1vw;
+  font-family: Arial;
+  fill: white;
+}
+@keyframes disparitionText{
+  0%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+  }
+}
+.effaceText{
+  display:block!important;
+  animation: disparitionText 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-play-state: running;
+}
+#rect4{
+  position: absolute;
+  top: 5vw;
+  left: 31vw;
+  z-index: -3;
+  height: 620px;
+  width: 836px;
+  overflow: hidden;
+}
+#compositionTerrain{
+  display: none;
+}
+#RECTANGLE{
+  width: 950px;
+  position: absolute;
+  top: 167px;
+  left: 538px;
+  z-index: 3;
+}
+#DEMI_RECTANGLE{
+  position: absolute;
+  top: 394px;
+  left: 679px;
+  width: 666px;
+  z-index: 3;
+}
+#DOUBLE_DEMI{
+  position: absolute;
+  top: 501px;
+  left: 836px;
+  width: 353px;
+  z-index: 3;
+}
+#ARC{
+  position: absolute;
+  top: 365px;
+  left: 871px;
+  width: 285px;
+  z-index: 3;
+}
+.zls-1, .zls-2, .zls-3, ellipse, .els-1, .els-2, .els-3, .els-4, .wls-1, .wls-2, .wls-3, .wls-4, .jls-1, .jls-2 {
+  stroke-dasharray:1323;
+  opacity:10;
+  display: none;
+}
+.debutDessin{
+  display: block!important;
+  animation: animate 3s cubic-bezier(0,0.23,1,.1);
+  animation-play-state: running;
+
+}
+.finDessin{
+  display:none;
+  animation-name: enlevesledessin;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+/**
+ * ----------------------------------------
+ * @animation traçage dessin
+ * ----------------------------------------
+ */
+@keyframes animate {
+  0% {
+    opacity:0;
+    fill: none;
+    stroke-dashoffset: 1323;
+    display: none;
+  }
+  2.5% {
+    opacity:0;
+    fill: none;
+    stroke-dashoffset: 1323;
+    display: none;
+  }
+  5% {
+    opacity:0;
+    fill: none;
+    stroke-dashoffset: 1323;
+    display: none;
+  }
+  10% {
+    opacity:0;
+    fill: none;
+    stroke-dashoffset: 1323;
+    display: none;
+  }
+  15% {
+    opacity:0;
+    fill: none;
+    stroke-dashoffset: 1323;
+    display: none;
+  }
+  20% {
+    opacity:0;
+    fill: none;
+    stroke-dashoffset: 1323;
+    display: none;
+  }
+  25% {
+    opacity:0;
+    fill: none;
+    stroke-dashoffset: 1323;
+    display: none;
+  }
+  30% {
+    opacity: 10;
+    fill: none;
+    stroke-dashoffset: 1323;
+  }
+  90% {
+    fill: none;
+  }
+  100% {
+    opacity: 10;
+    fill: none;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes enlevesledessin {
+  0% {
+    opacity:10;
+    fill: none;
+    stroke-dashoffset: 0;
+  }
+  30% {
+    opacity: 10;
+    fill: none;
+    stroke-dashoffset: 0;
+  }
+  90% {
+    fill: rgba(255,255,255,0);
+  }
+  100% {
+    opacity: 0;
+    fill: rgba(255,255,255,1);
+    stroke-dashoffset: 0;
+  }
+}
+#image{
+  display: none;
+}
+.image{
+  display: none;
+}
+.allumesLaLumiere{
+  display: block!important;
+  animation-play-state: running;
+	animation: effetNeon 3s linear both;
+
+}
+.eteinsLaLumiere{
+  display: none;
+  animation-play-state: running;
+	animation: extinction 1s linear both;
+}
+@keyframes effetNeon {
+  0% {
+    opacity: 0;
+    display:none;
+  }
+  5%{
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  10.1% {
+    display: block;
+    opacity: 1;
+  }
+  10.2% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  20.1% {
+    opacity: 1;
+  }
+  20.6% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  30.1% {
+    opacity: 1;
+  }
+  30.5% {
+    opacity: 1;
+  }
+  30.6% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 0;
+  }
+  45.1% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  55.1% {
+    opacity: 0;
+  }
+  57% {
+    opacity: 0;
+  }
+  57.1% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  60.1% {
+    opacity: 0;
+  }
+  65% {
+    opacity: 0;
+  }
+  65.1% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  75.1% {
+    opacity: 0;
+  }
+  77% {
+    opacity: 0;
+  }
+  77.1% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  85.1% {
+    opacity: 0;
+  }
+  86% {
+    opacity: 0;
+  }
+  86.1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.maillots{
+  z-index: 3;
+  width: 80px;
+  position: absolute;
+  display: none;
+}
+#maillot1{
+  top: 165px;
+  left: 977px;
+}
+#maillot2{
+  top: 304px;
+  left: 977px;
+}
+#maillot3{
+  top: 263px;
+  left: 1250px;
+}
+#maillot4{
+  top: 263px;
+  left: 706px;
+}
+#maillot5{
+  top: 357px;
+  left: 1151px;
+}
+#maillot6{
+  top: 357px;
+  left: 795px;
+}
+#maillot7{
+  top: 394px;
+  left: 1288px;
+}
+#maillot8{
+  top: 424px;
+  left: 1060px;
+}
+#maillot9{
+  top: 424px;
+  left: 880px;
+}
+#maillot10{
+  top: 394px;
+  left: 666px;
+}
+#maillot11{
+  top: 547px;
+  left: 977px;
+}
+
+.apparitionJoueur{
+  display: block!important;
+  animation: apparais 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-delay: 1.5s;
+  animation-play-state: running;
+}
+.disparitionJoueur{
+  display:none;
+  animation-name: disparais;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+/**
+ * ----------------------------------------
+ * animation apparition joueurs
+ * ----------------------------------------
+ */
+@keyframes apparais {
+  0% {
+    transform: rotateY(80deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+
+}
+@keyframes disparais {
+  0% {
+    display: block;
+    opacity: 1;
+  }
+100% {
+    display: block;
+    opacity: 0;
+
+  }
+}
+.nomsNumerosJoueurs{
+  position: absolute;
+  font-size: 0.75em;
+  font-family: Arial;
+  color: white;
+  display: none;
+  z-index: 3;
+}
+#nomNumeroJoueur1{
+  top:242px;
+  left:999px;
+}
+#nomNumeroJoueur2{
+  top:338px;
+  left:1265px;
+}
+#nomNumeroJoueur3{
+  top:382px;
+  left:990px;
+}
+#nomNumeroJoueur4{
+  top:338px;
+  left:717px;
+}
+#nomNumeroJoueur5{
+  top:433px;
+  left:1171px;
+}
+#nomNumeroJoueur6{
+  top:433px;
+  left:814px;
+}
+#nomNumeroJoueur7{
+  top:469px;
+  left:1304px;
+}
+#nomNumeroJoueur8{
+  top:503px;
+  left:1078px;
+}
+#nomNumeroJoueur9{
+  top:503px;
+  left:874px;
+}
+#nomNumeroJoueur10{
+  top:469px;
+  left:664px;
+}
+#nomNumeroJoueur11{
+  top:625px;
+  left:992px;
+}
+.apparitionNom{
+  display: block!important;
+	animation: apparitionText 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 1.5s;
+  animation-play-state: running;
+}
+.disparitionNom{
+  display:none;
+  animation-name: disparais;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-play-state: running;
+}
+/**
+ * ----------------------------------------
+ * animation apparitionText
+ * ----------------------------------------
+ */
+
+@keyframes apparitionText {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}

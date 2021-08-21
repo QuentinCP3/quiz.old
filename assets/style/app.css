@@ -1,0 +1,263 @@
+/*anim cadre*/
+@keyframes resize {
+	0% {
+		padding: 0;
+		background-color:rgba(60,60,60,0);
+		height:0px;
+		width:0px;
+		border-radius:10px;
+		font-size:0px;
+		color:#FFF;
+		top:50px;
+	}
+	15% {
+		height:1px;
+		width:10px;
+		border-radius:10px;
+		background-color:rgba(60,60,60,4);
+	}
+	25% {
+		height:1px;
+		width:100%;
+		top:50px;
+	}
+	40% {
+		height:100%;
+		top:0;
+		background-color:rgba(60,60,60,1);
+	}
+	60% {
+		background-color:rgba(0,136,204,1);
+		font-size:0px;
+	}
+	70% {
+		font-size:40px;
+	}
+	100% {
+		background-color:rgba(12,170,244,1);
+	}
+}
+/*anim arrivée du logo*/
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  25% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+}
+/*anim joueur*/
+@keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px);
+            transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+
+
+#cssanimation {
+	height: 34vw;
+	width: 25%;
+	margin: 0 auto;
+
+}
+#cssanimation #animationbox {
+  animation-play-state:paused;
+  height: 100%;
+  width: 100%;
+  border: 2px ridge #1C6EA4;
+  border-radius: 0px 15px 90px 0px;
+  background: -webkit-linear-gradient(bottom left, #216ECE 0%, #5E76A4 58%, #104FC5 100%);
+  background: -o-linear-gradient(bottom left, #216ECE 0%, #5E76A4 58%, #104FC5 100%);
+  background: linear-gradient(to top right, #216ECE 0%, #5E76A4 58%, #104FC5 100%);
+  font-size: 40px;
+  color: #FFF;
+  text-align: center;
+  line-height: 50px;
+  margin: 5vw auto;
+  padding-top: 2vw;
+  top: 0;
+  position: relative;
+  animation-name: resize;
+  animation-duration: 5s;
+  animation-iteration-count: 2;
+  /*animation-play-state: paused;*/
+  animation-direction: alternate;
+}
+#circle{
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  border: solid 2px rgba(0, 0, 0, 0.5);
+  background:url("img/1.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 2vw;
+  left: 34vw;
+  z-index: 999;
+  text-align: center;
+  animation: scale-up-center 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation-delay: 5s;
+  animation-iteration-count: 1;
+  animation-play-state:paused;
+  /*animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;*/
+  }
+
+ul {
+  list-style-type: none;
+  list-style-position: outside;
+  }
+
+li {
+  padding: 0px;
+  font-size: 20px;
+  position: relative;
+  bottom: 1vw;
+	right: 6vw;
+  }
+
+	.entraineur{
+		padding: 0px;
+		font-size: 20px;
+		position: relative;
+		bottom: 31vw;
+		left: 4vw;
+	}
+
+	.remplacant{
+		padding: 0px;
+		font-size: 20px;
+		position: relative;
+		bottom: 31vw;
+		left: 4vw;
+	}
+
+#joueur1{
+  animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 6s;
+  animation-play-state:paused;
+
+  }
+#joueur2{
+  animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 6.5s;
+  animation-play-state:paused;
+
+  }
+#joueur3{
+  animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 7s;
+  animation-play-state:paused;
+
+  }
+#joueur4{
+  animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 7.5s;
+  animation-play-state:paused;
+  }
+#joueur5{
+  animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 8s;
+  animation-play-state:paused;
+  }
+#joueur6{
+  animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 8.5s;
+  animation-play-state:paused;
+  }
+#joueur7{
+  animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 9s;
+  animation-play-state:paused;
+  }
+#joueur8{
+  animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 9.5s;
+  animation-play-state:paused;
+  }
+#joueur9{
+  animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 10s;
+  animation-play-state:paused;
+  }
+#joueur10{
+  animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 10.5s;
+  animation-play-state:paused;
+  }
+#joueur11{
+  animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 11s;
+  animation-play-state:paused;
+  }
+  .joueur{
+    animation-play-state:paused;
+  }
+#remplacant1{
+	animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 11.5s;
+  animation-play-state:paused;
+}
+#remplacant2{
+	animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 11.5s;
+  animation-play-state:paused;
+}
+#remplacant3{
+	animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 11.5s;
+  animation-play-state:paused;
+}
+#remplacant4{
+	animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 11.5s;
+  animation-play-state:paused;
+}
+#remplacant5{
+	animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 11.5s;
+  animation-play-state:paused;
+}
+#remplacant6{
+	animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 11.5s;
+  animation-play-state:paused;
+}
+#remplacant7{
+	animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 11.5s;
+  animation-play-state:paused;
+}
+#entraineur1{
+	animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 11.5s;
+  animation-play-state:paused;
+}
+#entraineur2{
+	animation: tracking-in-contract-bck 0.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation-delay: 11.5s;
+  animation-play-state:paused;
+}

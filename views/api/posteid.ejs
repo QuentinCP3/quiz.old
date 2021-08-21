@@ -1,0 +1,9 @@
+<select name="postenom"  class="form-control" required>
+	<% postes.forEach(function(poste){ %>
+	<% if(poste.id==lastposte){ %>
+	<option value="<%= poste.id %>" selected><%= poste.nom %></option>
+	<% } else{ %>
+	<option value="<%= poste.id %>"><%= poste.nom %></option>
+	<% } %>
+	<% }); %>
+</select>
