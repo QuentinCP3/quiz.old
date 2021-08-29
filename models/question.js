@@ -44,6 +44,10 @@ module.exports = function(sequelize, DataTypes) {
     difficulté: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    commentaire: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     tableName: 'question'

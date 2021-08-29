@@ -125,6 +125,7 @@ SetTimerArray(db);
 
           app.post('/addQuestion',isLoggedIn,function(req,res){
             // db.match.findAll({include:[db.sport]}).then(function(matchs){
+            console.log(req.body);
             db.question.create({
               intitule:req.body.question,
               rep_1:req.body.repA,
@@ -458,7 +459,7 @@ SetTimerArray(db);
     socket.on('timerPreGame', function(id_partie) {
       var timerMode = "preGame";
       timer[id_partie] = new Timer();
-      timer[id_partie].start({countdown: true, precision: 'secondTenths', startValues: {seconds: 15}});
+      timer[id_partie].start({countdown: true, precision: 'secondTenths', startValues: {seconds: 3}});
       timer[id_partie].addEventListener('secondTenthsUpdated', () => {
         var chrono = timer[id_partie].getTimeValues().seconds.toString();
         var chronoTenths = timer[id_partie].getTimeValues().seconds.toString()+timer[id_partie].getTimeValues().secondTenths.toString();
@@ -541,15 +542,15 @@ SetTimerArray(db);
           console.log(result);
           if (result.reponse == reponse) {
             if (questionNumber == 1 || questionNumber == 2) {
-              points = 500 * chronometre/100 + 500;
+              points = 500 * chronometre/150 + 500;
             } else if (questionNumber == 3 || questionNumber == 4) {
-              points = 750 * chronometre/100 + 750;
+              points = 750 * chronometre/150 + 750;
             } else if (questionNumber == 5 || questionNumber == 6) {
-              points = 1000 * chronometre/100 + 1000;
+              points = 1000 * chronometre/150 + 1000;
             } else if (questionNumber == 7 || questionNumber == 8) {
-              points = 1250 * chronometre/100 + 1250;
+              points = 1250 * chronometre/150 + 1250;
             } else if (questionNumber == 9 || questionNumber == 10) {
-              points = 1500 * chronometre/100 + 1500;
+              points = 1500 * chronometre/150 + 1500;
             }
             console.log("POINTS : "+points);
             console.log("CATEGORIE : "+result.id_categorie_question);

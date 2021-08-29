@@ -20,7 +20,7 @@
 				<div class="card" id="question">
 					<div class="divAcc card-body">
 						<!--<p style="font-size: 20px">QUESTION</p>-->
-						<div style="height:200px">
+						<div style="height:325px">
 							<p id="msginfoquestion"></p>
 							<p id="msginfopoints"></p>
 							<p id="msginforeponse"></p>
@@ -94,7 +94,6 @@
 		var questionNumber = compteur();
 
  		function listJoueurs() {
-
 			console.log(nombre_joueurs);
 			console.log(id_partie);
 			socket.emit('listJoueurs', id_partie, nombre_joueurs);
@@ -198,6 +197,15 @@
 					console.log(questionNumber.valeur());
 					console.log(question);
 					console.log(question.intitule);
+					if (question.intitule[0] == "/") {
+						$('#msginfoquestion').html("");
+						var im = document.createElement("img");
+						im.src = question.intitule;
+						im.setAttribute("width", "75%");
+						document.getElementById("msginfoquestion").appendChild(im);
+					} else {
+						$('#msginfoquestion').html(question.intitule);
+					}
 					$('#rep1').html(question.rep_1);
 					$('#rep2').html(question.rep_2);
 					$('#rep3').html(question.rep_3);
@@ -214,7 +222,6 @@
 					btnB.style.background = 'white';
 					btnC.style.background = 'white';
 					btnD.style.background = 'white';
-					$('#msginfoquestion').html(question.intitule);
 					questionNumber.increment();
 					socket.emit('timerQuestion', id_partie, question.id_question);
 					var audioQuestion = new Audio('/mp3/vertical.mp3');
@@ -309,6 +316,7 @@
 		}
 
 		socket.on('treat_answer', function(numeroReponse, resultat, points, reponse, bonne_reponse) {
+			points = Math.trunc(points);
 			console.log('TREAT_ANSWER');
 			console.log(numeroReponse);
 			console.log(resultat);
@@ -366,6 +374,8 @@
 						var wrongAnswer = document.getElementById('a'+numeroReponse);
 						wrongAnswer.style.background = "red";
 					}
+					var audio = new Audio('/mp3/huee.mp3');
+					audio.play();
 				}
 				listJoueurs();
 				entreDeuxQuestions();
