@@ -1,29 +1,29 @@
 {
   "development": {
-    "username": "Bb3jT0fTxA",
-    "password": "KxNGRaqup1",
-    "database": "Bb3jT0fTxA",
-    "host": "remotemysql.com",
+    "username": "root",
+    "password": null,
+    "database": "quiz",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "define": {
    "timestamps": true
   }
   },
   "test": {
-    "username": "Bb3jT0fTxA",
-    "password": "KxNGRaqup1",
-	"database": "Bb3jT0fTxA",
-    "host": "remotemysql.com",
+    "username": "root",
+    "password": null,
+	"database": "quiz",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "define": {
    "timestamps": true
 }
   },
   "production": {
-    "username": "Bb3jT0fTxA",
-    "password": "KxNGRaqup1",
-	"database": "Bb3jT0fTxA",
-    "host": "remotemysql.com",
+    "username": "root",
+    "password": null,
+	"database": "quiz",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "define": {
    "timestamps": true
