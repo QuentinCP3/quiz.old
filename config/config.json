@@ -1,0 +1,32 @@
+{
+  "development": {
+    "username": "numr6871_root",
+    "password": "P#Y9j4CY$R&YErNx",
+    "database": "numr6871_quiz",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "define": {
+   "timestamps": true
+  }
+  },
+  "test": {
+    "username": "numr6871_root",
+    "password": "P#Y9j4CY$R&YErNx",
+	  "database": "numr6871_quiz",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "define": {
+   "timestamps": true
+}
+  },
+  "production": {
+    "username": "numr6871_root",
+    "password": "P#Y9j4CY$R&YErNx",
+	  "database": "numr6871_quiz",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "define": {
+   "timestamps": true
+}
+  }
+}

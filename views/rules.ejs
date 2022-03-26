@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+    <link rel="stylesheet" href="/main.css">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/partie.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/css/loading-bar.css"/>
+	  <title>Règles</title>
+</head>
+<body>
+<% include partiel/navbar.ejs %>
+
+
+	<div class="col-md-10" style="margin: 0 auto;">
+		<p id="titre">REGLES</p>
+		<div class="row">
+
+      <!--<div data-preset="stripe" class="ldBar label-center" data-value="35"></div>-->
+
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/loading-bar.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		//var socket = io.connect('http://192.168.10.63:3000');
+		var socket = io.connect();
+		//var socket = io.connect('http://192.168.0.55:3000');
+
+    socket.emit('switchRoom', {room: 'Règles'});
+	</script>
+</body>
+</html>

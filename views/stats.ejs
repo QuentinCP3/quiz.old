@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/main.css">
+		<link rel="stylesheet" type="text/css" href="/css/loading-bar.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/stats.css"/>
+		<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	  <title>Statistiques</title>
+</head>
+<body>
+<% include partiel/navbar.ejs %>
+
+
+	<div class="container-fluid">
+		<p id="titre">STATS DE <%=user.nom%></p>
+
+		  <p class="pStats">Bonnes réponses totales: <%=stats.nbre_bonnes_rep%><br/>
+			Mauvaises réponses totales : <%=stats.nbre_mauvaises_rep%></p>
+
+			<hr>
+
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-6 col-sm-12 col-md-6 col-12">
+						<div class="left">
+							<div class="divAcc row odd">
+								<div class="stats_cat">
+									<h3 class="text-info" style="color: #6225E6!important">Sport</h3>
+									<p class="pStats">Bonnes réponses : <%=stats.bonnes_rep_sports %><br/>
+										Mauvaises réponses : <%=stats.mauvaises_rep_sports%></p>
+								</div>
+								<div id="container0" class="container"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-12 col-md-6 col-12">
+						<div class="right">
+							<div class="divAcc row even">
+								<div class="stats_cat">
+									<h3 class="text-info" style="color: #6225E6!important">Arts et Littérature</h3>
+									<p class="pStats">Bonnes réponses : <%=stats.bonnes_rep_arts_litte%><br/>
+									Mauvaises réponses : <%=stats.mauvaises_rep_arts_litte%></p>
+								</div>
+								<div id="container1" class="container"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-12 col-md-6 col-12">
+						<div class="left">
+							<div class="divAcc row odd">
+								<div class="stats_cat">
+									<h3 class="text-info" style="color: #6225E6!important">Cinéma et Séries</h3>
+									<p class="pStats">Bonnes réponses : <%=stats.bonnes_rep_cine_series%><br/>
+									Mauvaises réponses : <%=stats.mauvaises_rep_cine_series%></p>
+								</div>
+								<div id="container2" class="container"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-12 col-md-6 col-12">
+						<div class="right">
+							<div class="divAcc row even">
+								<div class="stats_cat">
+									<h3 class="text-info" style="color: #6225E6!important">Musique</h3>
+									<p class="pStats">Bonnes réponses : <%=stats.bonnes_rep_musique%><br/>
+									Mauvaises réponses : <%=stats.mauvaises_rep_musique%></p>
+								</div>
+								<div id="container3" class="container"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-12 col-md-6 col-12">
+						<div class="left">
+							<div class="divAcc row odd">
+								<div class="stats_cat">
+									<h3 class="text-info" style="color: #6225E6!important">Histoire</h3>
+									<p class="pStats">Bonnes réponses : <%=stats.bonnes_rep_histoire%><br/>
+									Mauvaises réponses : <%=stats.mauvaises_rep_histoire%></p>
+								</div>
+								<div id="container4" class="container"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-12 col-md-6 col-12">
+						<div class="right">
+							<div class="divAcc row even">
+								<div class="stats_cat">
+									<h3 class="text-info" style="color: #6225E6!important">Géographie</h3>
+									<p class="pStats">Bonnes réponses : <%=stats.bonnes_rep_geo%><br/>
+									Mauvaises réponses : <%=stats.mauvaises_rep_geo%></p>
+								</div>
+								<div id="container5" class="container"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-12 col-md-6 col-12">
+						<div class="left">
+							<div class="divAcc row odd">
+								<div class="stats_cat">
+									<h3 class="text-info" style="color: #6225E6!important">Sciences naturelles</h3>
+									<p class="pStats">Bonnes réponses : <%=stats.bonnes_rep_sciences_nat%><br/>
+									Mauvaises réponses : <%=stats.mauvaises_rep_sciences_nat%></p>
+								</div>
+								<div id="container6" class="container"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-12 col-md-6 col-12">
+						<div class="right">
+							<div class="divAcc row even">
+								<div class="stats_cat">
+									<h3 class="text-info" style="color: #6225E6!important">Technologie</h3>
+									<p class="pStats">Bonnes réponses : <%=stats.bonnes_rep_techno%><br/>
+									Mauvaises réponses : <%=stats.mauvaises_rep_techno%></p>
+								</div>
+								<div id="container7" class="container"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-12 col-md-6 col-12">
+						<div class="left">
+							<div class="divAcc row odd">
+								<div class="stats_cat">
+									<h3 class="text-info" style="color: #6225E6!important">Economie et Société</h3>
+									<p class="pStats">Bonnes réponses : <%=stats.bonnes_rep_eco_societe%><br/>
+										Mauvaises réponses : <%=stats.mauvaises_rep_eco_societe%></p>
+								</div>
+								<div id="container8" class="container"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-12 col-md-6 col-12">
+						<div class="right">
+							<div class="divAcc row even">
+								<div class="stats_cat">
+									<h3 class="text-info" style="color: #6225E6!important">Blind-test</h3>
+									<p class="pStats">Bonnes réponses : <%=stats.bonnes_rep_blind_test%><br/>
+									Mauvaises réponses : <%=stats.mauvaises_rep_blind_test%></p>
+								</div>
+								<div id="container9" class="container"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<p class="text-info-chart">Répartition des questions jouées (Cliquez sur la légende pour cacher/faire ré-apparaître une catégorie)</p>
+			<canvas class="col-lg-10 col-md-10 col-12 col-sm-12" id="myChart" style="min-height:250px; text-align: center; margin: auto"></canvas>
+
+
+      <!--<div data-preset="stripe" class="ldBar label-center" data-value="35"></div>-->
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/loading-bar.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="js/Chart.js"></script>
+	<script src="js/progressbar.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		//var socket = io.connect('http://192.168.10.63:3000');
+		var socket = io.connect();
+		//var socket = io.connect('http://192.168.0.55:3000');
+
+    socket.emit('switchRoom', {room: 'Stats'});
+	</script>
+
+	<script>
+		var pct = new Array();
+
+		var pct_sports= <%= stats.bonnes_rep_sports %> / (<%= stats.bonnes_rep_sports %> + <%= stats.mauvaises_rep_sports %>);
+		if (isNaN(pct_sports)) {
+			pct_sports = 0;
+		}
+		pct.push(pct_sports);
+
+		var pct_arts_litte= <%= stats.bonnes_rep_arts_litte %> / (<%= stats.bonnes_rep_arts_litte %> + <%= stats.mauvaises_rep_arts_litte %>);
+		if (isNaN(pct_arts_litte)) {
+			pct_arts_litte = 0;
+		}
+		pct.push(pct_arts_litte);
+
+		var pct_cine_series= <%= stats.bonnes_rep_cine_series %> / (<%= stats.bonnes_rep_cine_series %> + <%= stats.mauvaises_rep_cine_series %>);
+		if (isNaN(pct_cine_series)) {
+			pct_cine_series = 0;
+		}
+		pct.push(pct_cine_series);
+
+		var pct_musique= <%= stats.bonnes_rep_musique %> / (<%= stats.bonnes_rep_musique %> + <%= stats.mauvaises_rep_musique %>);
+		if (isNaN(pct_musique)) {
+			pct_musique = 0;
+		}
+		pct.push(pct_musique);
+
+		var pct_histoire= <%= stats.bonnes_rep_histoire %> / (<%= stats.bonnes_rep_histoire %> + <%= stats.mauvaises_rep_histoire %>);
+		if (isNaN(pct_histoire)) {
+			pct_histoire = 0;
+		}
+		pct.push(pct_histoire);
+
+		var pct_geo= <%= stats.bonnes_rep_geo %> / (<%= stats.bonnes_rep_geo %> + <%= stats.mauvaises_rep_geo %>);
+		if (isNaN(pct_geo)) {
+			pct_geo = 0;
+		}
+		pct.push(pct_geo);
+
+		var pct_sciences_nat = <%= stats.bonnes_rep_sciences_nat %> / (<%= stats.bonnes_rep_sciences_nat %> + <%= stats.mauvaises_rep_sciences_nat %>);
+		if (isNaN(pct_sciences_nat)) {
+			pct_sciences_nat = 0;
+		}
+		pct.push(pct_sciences_nat);
+
+		var pct_techno= <%= stats.bonnes_rep_techno %> / (<%= stats.bonnes_rep_techno %> + <%= stats.mauvaises_rep_techno %>);
+		if (isNaN(pct_techno)) {
+			pct_techno = 0;
+		}
+		pct.push(pct_techno);
+
+		var pct_eco_societe= <%= stats.bonnes_rep_eco_societe %> / (<%= stats.bonnes_rep_eco_societe %> + <%= stats.mauvaises_rep_eco_societe %>);
+		if (isNaN(pct_eco_societe)) {
+			pct_eco_societe = 0;
+		}
+		pct.push(pct_eco_societe);
+
+		var pct_blind_test= <%= stats.bonnes_rep_blind_test %> / (<%= stats.bonnes_rep_blind_test %> + <%= stats.mauvaises_rep_blind_test %>);
+		if (isNaN(pct_blind_test)) {
+			pct_blind_test = 0;
+		}
+		pct.push(pct_blind_test);
+
+		// progressbar.js@1.0.0 version is used
+		// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+
+		// progressbar.js@1.0.0 version is used
+		// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+		var i = 0;
+		for (i = 0; i < pct.length; i++) {
+			var bar = new ProgressBar.SemiCircle('#container'+i, {
+			  strokeWidth: 6,
+			  color: '#FFEA82',
+			  trailColor: '#eee',
+			  trailWidth: 1,
+			  easing: 'easeInOut',
+			  duration: 1400,
+			  svgStyle: null,
+			  text: {
+			    value: '',
+			    alignToBottom: false
+			  },
+			  from: {color: '#FF0000'},
+			  to: {color: '#009E00'},
+			  // Set default step function for all animate calls
+			  step: (state, bar) => {
+			    bar.path.setAttribute('stroke', state.color);
+			    var value = Math.round(bar.value() * 100);
+			    if (value === 0) {
+			      bar.setText('');
+			    } else {
+			      bar.setText(value+"%");
+			    }
+			    bar.text.style.color = state.color;
+			  }
+			});
+			bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+			bar.text.style.fontSize = '2rem';
+			bar.animate(pct[i]);  // Number from 0.0 to 1.0
+		}
+
+		var q_sports = <%= stats.bonnes_rep_sports %> + <%=stats.mauvaises_rep_sports %>;
+		var q_arts_litte = <%= stats.bonnes_rep_arts_litte %> + <%=stats.mauvaises_rep_arts_litte %>;
+		var q_cine_series = <%= stats.bonnes_rep_cine_series %> + <%=stats.mauvaises_rep_cine_series %>;
+		var q_musique = <%= stats.bonnes_rep_musique %> + <%=stats.mauvaises_rep_musique %>;
+		var q_histoire = <%= stats.bonnes_rep_histoire %> + <%=stats.mauvaises_rep_histoire %>;
+		var q_geo = <%= stats.bonnes_rep_geo %> + <%=stats.mauvaises_rep_geo %>;
+		var q_sciences_nat = <%= stats.bonnes_rep_sciences_nat %> + <%=stats.mauvaises_rep_sciences_nat %>;
+		var q_techno = <%= stats.bonnes_rep_techno %> + <%=stats.mauvaises_rep_techno %>;
+		var q_eco_societe = <%= stats.bonnes_rep_eco_societe %> + <%=stats.mauvaises_rep_eco_societe %>;
+		var q_blind_test = <%= stats.bonnes_rep_blind_test %> + <%=stats.mauvaises_rep_blind_test %>;
+
+
+		var ctx = document.getElementById('myChart');
+		var myChart = new Chart(ctx, {
+		    type: 'pie',
+		    data: {
+		        labels: ['Sports', 'Arts et Littérature', 'Cinéma et Séries', 'Musique', 'Histoire', 'Géographie', 'Sciences naturelles', 'Technologie', 'Economie et Société'],
+		        datasets: [{
+		            label: 'Nombre de questions jouées',
+		            data: [q_sports, q_arts_litte, q_cine_series, q_musique, q_histoire, q_geo, q_sciences_nat, q_techno, q_eco_societe, q_blind_test],
+		            backgroundColor: [
+		                'rgba(252, 3, 3, 0.2)',
+		                'rgba(252, 140, 3, 0.2)',
+		                'rgba(240, 252, 3, 0.2)',
+		                'rgba(107, 252, 3, 0.2)',
+		                'rgba(13, 252, 181, 0.2)',
+		                'rgba(3, 169, 252, 0.2)',
+		                'rgba(24, 3, 252, 0.2)',
+		                'rgba(181, 3, 252, 0.2)',
+		                'rgba(252, 3, 177, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(252, 3, 3, 1)',
+		                'rgba(252, 140, 3, 1)',
+		                'rgba(240, 252, 3, 1)',
+		                'rgba(107, 252, 32, 1)',
+		                'rgba(3, 252, 181, 1)',
+		                'rgba(3, 169, 252, 1)',
+		                'rgba(24, 3, 252, 1)',
+		                'rgba(181, 3, 252, 1)',
+		                'rgba(252, 3, 177, 1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+											  max: Math.max(q_sports, q_arts_litte, q_cine_series, q_musique, q_histoire, q_geo, q_sciences_nat, q_techno, q_eco_societe, q_blind_test),
+		                    beginAtZero: true
+		                }
+		            }]
+		        },
+						responsive: true,
+						maintainAspectRatio: true,
+						aspectRatio: 2
+		    }
+		});
+
+	</script>
+</body>
+</html>

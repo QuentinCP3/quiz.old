@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+<head>
+    <title>Accueil</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/jouer.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+</head>
+<style>
+  .gold {
+    background-color: gold!important;
+  }
+
+  .silver {
+    background-color: silver!important;
+  }
+
+  .bronze {
+    background-color: #cd7f32!important;
+  }
+
+  td {
+    font-weight: bold;
+    text-shadow: 0.5px 0.5px 0.5px black;
+    color: black;
+    padding: 0.25rem!important
+  }
+
+  table {
+    width: 100%
+  }
+
+  table tr:first-child td {
+    background-color: gold;
+  }
+
+  table tr:nth-child(2) td {
+    background-color: silver;
+  }
+
+  table tr:nth-child(3) td {
+    background-color: #cd7f32;
+  }
+</style>
+<body>
+
+    <% include partiel/navbar.ejs %>
+    <div class="container-fluid">
+      <div class="row" style="padding:2%;">
+        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+          <div class="card">
+            <div id="infos">
+              <b>Solde de <%= user.nom %> :</b> <%= user.points %> pts<br/>
+              <b>Niveau :</b><br/>
+              <b>Parties restantes :</b> <%= user.parties_gratuites %>
+            </div>
+          </div>
+        </div>
+        <div class="welcome">
+          <p>Bonjour <b><%= user.nom %></b> (id session : <%= idsession %>)<br/>
+          Bienvenue sur Jacquizz</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card pl-0 pr-0 col-xl-3 col-lg- 4 col-md-5 col-sm-6 col-12" style="height: 500px">
+          <h4 class="card-title mt-2" style="text-align: center">Différents classements</h4>
+          <div class="carousel slide" id="nextRanking" data-ride="carousel">
+            <div class="card-body carousel-inner pt-0">
+              <div class="carousel-item active">
+                <div class="table-responsive">
+                  <table class="tableStats" id="total" style="width: 100%">
+                    <thead>
+                      <th>Pos.</th>
+                      <th>Joueur</th>
+                      <th>Pourcentage</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="table-responsive">
+                  <table class="tableStats" id="sport" style="width: 100%">
+                    <thead>
+                      <th>Pos.</th>
+                      <th>Joueur</th>
+                      <th>Pourcentage</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="table-responsive">
+                  <table class="tableStats" id="art-litte" style="width: 100%">
+                    <thead>
+                      <th>Pos.</th>
+                      <th>Joueur</th>
+                      <th>Pourcentage</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#nextRanking" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#nextRanking" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+        <div class="card pl-0 pr-0 col-xl-3 col-lg- 4 col-md-5 col-sm-6 col-12" style="height: 500px"></div>
+      </div>
+<% include partiel/footer.ejs %>
+
+<script src="/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+
+//var socket = io.connect('http://192.168.10.63:3000');
+//var socket = io.connect('http://192.168.0.55:3000');
+var socket = io.connect();
+  socket.emit('switchRoom', {room: 'Accueil'});
+</script>
+
+<script>
+    $(document).ready( function () {
+      let dataTable = [];
+      let dataTablesSport = [];
+      let dataTablesArtLitte = [];
+      <% stats_tot.forEach((item, i) => { %>
+        dataTable.push({
+          id:0,
+          nom:"<%= item.nom %>",
+          pourcentage:<%= parseFloat(Math.round(item.pourcentage * 100)) / 100 %>
+        });
+
+        dataTablesSport.push({
+          id:0,
+          nom:"<%= item.nom %>",
+          pourcentage:<%= parseFloat(Math.round((stats_tot[i].bonnes_rep_sports/(stats_tot[i].bonnes_rep_sports+stats_tot[i].mauvaises_rep_sports) * 100) * 100))/100 %>
+        });
+
+        dataTablesArtLitte.push({
+          id:0,
+          nom:"<%= item.nom %>",
+          pourcentage:<%= parseFloat(Math.round((stats_tot[i].bonnes_rep_arts_litte/(stats_tot[i].bonnes_rep_arts_litte+stats_tot[i].mauvaises_rep_arts_litte) * 100) * 100))/100 %>
+        });
+      <% }); %>
+
+      dataTable.sort(function(a,b){ return parseFloat(a.pourcentage) < parseFloat(b.pourcentage) ? 1 : -1; });
+      dataTablesSport.sort(function(a,b){ return parseFloat(a.pourcentage) < parseFloat(b.pourcentage) ? 1 : -1; });
+      dataTablesArtLitte.sort(function(a,b){ return parseFloat(a.pourcentage) < parseFloat(b.pourcentage) ? 1 : -1; });
+
+      let tableTotal;
+      tableTotal = $('#total').DataTable({
+         "order": [ 2, 'desc' ],
+         "paging": false,
+         "bInfo" : false,
+         dataType: "json",
+         dom: "Bfrtip",
+         data: dataTable,
+         columns: [{
+                 data: "id",
+                 render: function(data, type, row, meta, full) {
+                   return meta.row + 1;
+                 }
+             },
+             {
+                 data: "nom",
+             },
+             {
+                 data: "pourcentage",
+             }
+          ],
+      });
+      $('#total').append('<caption style="text-align: center; padding-bottom: 0">Total</caption>');
+
+      $('#sport').DataTable({
+         "order": [ 2, 'desc' ],
+         "paging": false,
+         "bInfo" : false,
+         dataType: "json",
+         dom: "Bfrtip",
+         data: dataTablesSport,
+         columns: [{
+                 data: "id",
+                 render: function(data, type, row, meta, full) {
+                   return meta.row + 1;
+                 }
+             },
+             {
+                 data: "nom",
+             },
+             {
+                 data: "pourcentage",
+             }
+          ],
+      });
+      $('#sport').append('<caption style="text-align: center; padding-bottom: 0">Sport</caption>');
+
+      $('#art-litte').DataTable({
+         "order": [ 2, 'desc' ],
+         "paging": false,
+         "bInfo" : false,
+         dataType: "json",
+         dom: "Bfrtip",
+         data: dataTablesArtLitte,
+         columns: [{
+                 data: "id",
+                 render: function(data, type, row, meta, full) {
+                   return meta.row + 1;
+                 }
+             },
+             {
+                 data: "nom",
+             },
+             {
+                 data: "pourcentage",
+             }
+          ],
+      });
+      $('#art-litte').append('<caption style="text-align: center; padding-bottom: 0">Art et littérature</caption>');
+    } );
+
+</script>
+
+
+</body>
+</html>

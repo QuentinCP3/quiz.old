@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title>Connexion au quiz</title>
+    <link rel="stylesheet" href="/css/bootstrap3.0.2.min.css" integrity="sha384-9d8Aogf7tHtMbZ308B717RIAg9eT36ej1BichgRciu424PhBqbSByjRC78yLE7ZX" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" integrity="sha384-VkQkSCa5cfqslmkwUAeovUYczl8ONc69MCGqqV0zsRwXjfQqaFvCmMppB03Uvkqt" crossorigina="anonymous">
+    <style>
+    body        { padding-top:80px; }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h1><span class="fa fa-sign-in"></span> Connexion</h1>
+            <!-- Si message d'erreur au login : -->
+            <% if (message.length > 0) { %>
+            <div class="alert alert-danger"><%= message %></div>
+            <% } %>
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <label>Pseudo</label>
+                    <input type="text" class="form-control" name="nom">
+                </div>
+                <div class="form-group">
+                    <label>Mot de passe </label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+
+                <button type="submit" class="btn btn-success btn-lg">Se connecter</button>
+            </form>
+            <hr>
+            Non inscrit(e) ? <a href="/signup">Inscrivez-vous ici !</a>
+
+        </div>
+
+    </div>
+</body>
+</html>

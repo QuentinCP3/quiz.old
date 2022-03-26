@@ -1,0 +1,232 @@
+body {
+	height: 100vh;
+  background-color: rgb(237, 237, 237)!important;
+}
+
+.btn-light:hover {
+	background-color: grey;
+}
+
+#tablejoueurs {
+	width: 100%;
+}
+
+.listJoueurs {
+    display: flex;
+    padding: 3% 12%;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: white;
+    background: #6225E6;
+    transition: 1s;
+    box-shadow: 6px 6px 0 black;
+    transform: skewX(-15deg);
+}
+
+.listJoueurs1 {
+    display: flex;
+    padding: 3% 12%;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: white;
+    background: #25E662;
+    transition: 1s;
+    box-shadow: 6px 6px 0 black;
+    transform: skewX(-15deg);
+}
+
+.boutonRep {
+    display: flex;
+    padding: 3% 12%;
+    text-decoration: none;
+		font-weight: bold;
+    font-size: 16px;
+    color: black;
+    box-shadow: 6px 6px 0 black;
+    transform: skewX(-15deg);
+}
+
+
+#question {
+	margin: 0 auto;
+	width:75%;
+	height: 45vh;
+	text-align: center;
+	border-radius: 2%;
+}
+
+#question_eminem {
+	margin: 0 auto;
+	width:75%;
+	height: 525px;
+	text-align: center;
+	border-radius: 2%;
+}
+
+#msginfopoints {
+	text-align:center
+}
+
+#msginforeponse {
+	text-align:center
+}
+
+#msginfoquestion {
+	text-align:center
+}
+
+#progressbar {
+	width: 100%;
+}
+
+#line1jeu {
+	margin: 0 auto
+}
+
+
+#line2jeu {
+	margin: 0 auto
+}
+
+#a1 {
+	border: 1px solid black;
+	background: white
+}
+
+#a2 {
+	border: 1px solid black;
+	background: white
+}
+
+#a3 {
+	border: 1px solid black;
+	background: white
+}
+
+#a4 {
+	border: 1px solid black;
+	background: white
+}
+
+.repSize {
+	font-size: 20px
+}
+
+#chat {
+	width: 100%;
+	height: 500px;
+	overflow: auto;
+	border-radius: 2%;
+	overflow: auto;
+	overflow-wrap: anywhere;
+}
+
+#titre {
+	font-size: 75px;
+	text-align: center;
+	font-family: 'Poppins', sans-serif;
+}
+
+@media screen and (min-width: 800px) {
+	.espace {
+		width:15%
+	}
+}
+
+@media screen and (max-width: 799px) {
+  #a1 {
+    width: 45%
+  }
+  #a2 {
+    width: 45%
+  }
+  #a3 {
+    width: 45%
+  }
+  #a4 {
+    width: 45%
+  }
+
+	#line1jeu {
+		flex-wrap: wrap;
+	}
+	#line2jeu {
+		flex-wrap: wrap;
+	}
+	.espace {
+		width:5%
+	}
+}
+
+@media screen and (min-width: 1700px) {
+	.chat {
+		width: 235px
+	}
+	#formulaire_chat {
+		top: 628px;
+		width: 231px;
+		position:absolute;
+		bottom:0;
+	}
+}
+
+@media screen and (max-width: 1699px) {
+	.chat {
+		width: 200px
+	}
+	#formulaire_chat {
+		top: 628px;
+		width: 196px;
+		position:absolute;
+		bottom:0;
+	}
+}
+
+@media screen and (max-width: 1454px) {
+	.chat {
+		width: 150px
+	}
+	#formulaire_chat {
+		top: 628px;
+		width: 146px;
+		position:absolute;
+		bottom:0;
+	}
+}
+
+@media screen and (max-width: 1094px) {
+	.chat {
+		width: 100px
+	}
+	#formulaire_chat {
+		top: 628px;
+		width: 96px;
+		position:absolute;
+		bottom:0;
+	}
+}
+
+@media screen and (max-width: 768px) {
+
+	.chat {
+		margin-top: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 90%
+	}
+	#formulaire_chat {
+		top: 628px;
+		width: 88%;
+		position:absolute;
+		bottom:0;
+	}
+}
+
+#message {
+	width: 100%;
+}
+#envoi_message {
+	width: 100%;
+}

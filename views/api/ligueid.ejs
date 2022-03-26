@@ -1,0 +1,9 @@
+<select name="liguenom" class="form-control" required>
+	<% ligues.forEach(function(ligue){ %>
+	<% if(ligue.id==lastligue){ %>
+	<option value="<%= ligue.id %>" selected><%= ligue.nom %></option>
+	<% } else{ %>
+	<option value="<%= ligue.id %>"><%= ligue.nom %></option>
+	<% } %>
+	<% }); %>
+</select>

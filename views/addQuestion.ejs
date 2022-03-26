@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+    <title>Ajouter question</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/jouer.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.min.css">
+</head>
+<body>
+
+    <% include partiel/navbar.ejs %>
+    <div class="container-fluid" style="margin: auto">
+      <br/>
+      <form action="/addQuestion" method="post">
+        <div class="form-group">
+          <label for="question">Question</label>
+          <input type="text" class="form-control col-12" name="question" id="question" placeholder="Question" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+            <label for="repA">Réponse A</label>
+            <input class="form-control"type="text" class="form-control" id="repA" name="repA" placeholder="Rep. A" required>
+          </div>
+          <div class="form-group col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+            <label for="repB">Réponse B</label>
+            <input class="form-control"type="text" class="form-control" id="repB" name="repB" placeholder="Rep. B" required>
+          </div>
+          <div class="form-group col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+            <label for="repC">Réponse C</label>
+            <input class="form-control"type="text" class="form-control" id="repC" name="repC" placeholder="Rep. C" required>
+          </div>
+          <div class="form-group col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+            <label for="repD">Réponse D</label>
+            <input class="form-control"type="text" class="form-control" id="repD" name="repD" placeholder="Rep. D" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <label for="bonneRep">Bonne réponse</label>
+            <input type="text" class="form-control" id="bonneRep" name="bonneRep" placeholder="Bonne réponse" required>
+          </div>
+          <div class="form-group col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+            <label class="mr-sm-2" for="categorie">Catégorie</label>
+            <select class="custom-select mr-sm-2" id="categorie" name="categorie">
+              <option value="1">Sports</option>
+              <option value="2">Arts et littérature</option>
+              <option value="3">Cinéma et séries</option>
+              <option value="4">Musique</option>
+              <option value="5">Histoire</option>
+              <option value="6">Géographie</option>
+              <option value="7">Sciences et nature</option>
+              <option value="8">Technologie</option>
+              <option value="9">Economie et société</option>
+              <option value="10">Blind-test Eminem</option>
+              <option value="11">Blind-test</option>
+            </select>
+          </div>
+          <div class="form-group col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+            <label class="mr-sm-2" for="difficulte">Difficulté</label>
+            <select class="custom-select mr-sm-2" id="difficulte" name="difficulte">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="commentaire">Commentaire</label>
+          <input type="text" class="form-control" name="commentaire" id="commentaire" placeholder="Commentaire" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+      </form>
+      <br/>
+      <div><h3 id='TOTAL'>NOMBRE DE QUESTIONS : </h3>
+        <div class="row" style="margin: 1%">
+          <div style='width: 15%'>
+            <div id='sports'></div>
+            <div id='art_litte'></div>
+            <div id='cine_serie'></div>
+            <div id='musique'></div>
+            <div id='histoire'></div>
+            <div id='geo'></div>
+            <div id='science_nat'></div>
+            <div id='techno'></div>
+            <div id='eco_societe'></div>
+            <div id='blind_test_eminem'></div>
+            <div id='blind_test'></div>
+          </div>
+          <div style='width: 15%'>
+            <div id='tresFacile'></div>
+            <div id='facile'></div>
+            <div id='moyen'></div>
+            <div id='difficile'></div>
+            <div id='tresDifficile'></div>
+          </div>
+        </div>
+        <!--<iframe id="ytplayer" style="display:none" width="540" height="360" src="#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+        <div ></div>
+    </div>
+<% include partiel/footer.ejs %>
+
+<script src="/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<script type="text/javascript">
+
+  //var socket = io.connect('http://192.168.10.63:3000');
+  var socket = io.connect();
+  //var socket = io.connect('http://192.168.0.55:3000');
+
+  socket.emit('switchRoom', {room: 'Ajout question'});
+</script>
+
+<script>
+    $(document).ready( function () {
+      nombreQuestions();
+    } );
+
+    function nombreQuestions() {
+      socket.emit('get_question_number');
+    }
+
+    socket.on('Display_number_question', function(numberOfQuestions, numberOfQuestionsDifficulty) {
+      console.log(numberOfQuestions);
+      var total = 0;
+      for (var i = 0; i < numberOfQuestions.length; i++) {
+        total += numberOfQuestions[i].nombre_question;
+      }
+      $('#sports').html("Sports : "+numberOfQuestions[0].nombre_question);
+      $('#art_litte').html("Art - Littérature : "+numberOfQuestions[1].nombre_question);
+      $('#cine_serie').html("Cinéma - séries : "+numberOfQuestions[2].nombre_question);
+      $('#musique').html("Musique : "+numberOfQuestions[3].nombre_question);
+      $('#histoire').html("Histoire : "+numberOfQuestions[4].nombre_question);
+      $('#geo').html("Géographie : "+numberOfQuestions[5].nombre_question);
+      $('#science_nat').html("Sciences - Nature : "+numberOfQuestions[6].nombre_question);
+      $('#techno').html("Technologie : "+numberOfQuestions[7].nombre_question);
+      $('#eco_societe').html("Economie - Société : "+numberOfQuestions[8].nombre_question);
+      if (numberOfQuestions[10] == undefined) {
+        $('#blind_test').html("Blind test : "+numberOfQuestions[9].nombre_question);
+      } else {
+        $('#blind_test_eminem').html("Blind test Eminem : "+numberOfQuestions[9].nombre_question);
+        $('#blind_test').html("Blind test : "+numberOfQuestions[10].nombre_question);
+      }
+      $('#TOTAL').html("NOMBRE DE QUESTIONS : "+total);
+      $('#tresFacile').html("Très facile : "+numberOfQuestionsDifficulty[0].nombre_question);
+      $('#facile').html("Facile : "+numberOfQuestionsDifficulty[1].nombre_question);
+      $('#moyen').html("Moyen : "+numberOfQuestionsDifficulty[2].nombre_question);
+      $('#difficile').html("Difficile : "+numberOfQuestionsDifficulty[3].nombre_question);
+      $('#tresDifficile').html("Très difficile : "+numberOfQuestionsDifficulty[4].nombre_question);
+
+      setTimeout(function(){
+        //document.getElementById('ytplayer').src = "https://www.youtube.com/embed/LRIamSHWEug?autoplay=1&end=10";
+      }, 12000);
+
+    });
+
+
+
+</script>
+
+
+</body>
+</html>

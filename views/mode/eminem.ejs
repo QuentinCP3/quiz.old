@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/partie.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/css/loading-bar.css"/>
+	  <title>Mode classique</title>
+</head>
+<body>
+
+	<div class="col-md-10" style="margin: 0 auto;">
+		<p id="titre">EMINEM LYRICS</p>
+		<div class="row">
+			<div class="col-md-2">
+				<div id="tablejoueurs"></div>
+			</div>
+
+			<div class="col-md-8">
+				<div class="card" id="question_eminem">
+					<div class="divAcc card-body">
+						<!--<p style="font-size: 20px">QUESTION</p>-->
+						<div style="height:455px">
+							<p id="msginfoquestion"></p>
+							<p id="msginfopoints"></p>
+							<p id="msginforeponse"></p>
+						</div>
+						<div id="progressbar">
+							<div id="filledProgressBar"></div>
+						</div>
+					</div>
+				</div>
+				<br/><br/>
+
+				<div class="row" id="line1jeu">
+					<button id="a1" class="col-md-5 btn btn-light" onclick="reponse1()" disabled><div id="rep1"><p class="repSize"></p><a href="#"></a></div></button>
+					<div class="espace"></div>
+					<button id="a2" class="col-md-5 btn btn-light" onclick="reponse2()" disabled><div id="rep2"><p class="repSize"></p><a href="#"></a></div></button>
+				</div><br/>
+
+				<div class="row" id="line2jeu">
+					<button id="a3" class="col-md-5 btn btn-light" onclick="reponse3()" disabled><div id="rep3"><p class="repSize"></p><a href="#"></a></div></button>
+					<div class="espace"></div>
+					<button id="a4" class="col-md-5 btn btn-light" onclick="reponse4()" disabled><div id="rep4"><p class="repSize"></p><a href="#"></a></div></button>
+				</div>
+
+				<div id="chrono"></div>
+			</div>
+
+			<section class="chat">
+				<div class="card" id="chat">
+					<div class="divAcc card-body">
+					</div>
+				</div>
+				<form action="/" method="post" id="formulaire_chat">
+						<input type="text" name="message" id="message" placeholder="Votre message..." size="500000" autofocus required/><br/>
+						<input class="form-control btn-success" type="submit" id="envoi_message" value="Envoyer" />
+				</form>
+			</section>
+
+			<!--<div data-preset="stripe" class="ldBar label-center" data-value="35"></div>-->
+
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/loading-bar.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		//var socket = io.connect('http://192.168.10.63:3000');
+		var socket = io.connect();
+		//var socket = io.connect('http://192.168.0.55:3000');
+
+	</script>
+
+	<script type = "text/javascript">
+	    window.onload = function () {
+	        document.onkeydown = function (e) {
+	            return (e.which || e.keyCode) != 116;
+	        };
+	    }
+	</script>
+
+	<script>
+		var id_partie = <%= partie[0].id_partie %>;
+		var nombre_joueurs = <%= nombre_joueurs %>;
+		var displayed_players = 0;
+		function listJoueurs() {
+
+			console.log(nombre_joueurs);
+			console.log(id_partie);
+			socket.emit('listJoueurs', id_partie, nombre_joueurs);
+		}
+		if (displayed_players < 4) {
+			setInterval(listJoueurs, 1000);
+		}
+
+		var chronoStarted = false;
+		socket.on('displayJoueurs', function(membres, nombre_joueurs) {
+			console.log('DISPLAY JOUEURS');
+			let monTBody = $('#tablejoueurs');
+			var html = '';
+			var j = membres.length - 1;
+			var partie = membres[0].id_partie;
+			displayed_players = 0;
+			for (i = 0; i < membres.length; i++) {
+				var nom = membres[j].nom;
+				var score = membres[j].score;
+				html = html + '<div style="border:2px solid blue; background-color: rgba(66, 134, 244, 0.90); color: white"><p style="margin-bottom:0">'+nom+'<br/>'+score+' points</div><br/>';
+				j--;
+				displayed_players++;
+				//console.log(html);
+			}
+			monTBody.html('');
+			monTBody.html(html);
+			console.log(displayed_players);
+
+			var progressbarfill = document.getElementById('filledProgressBar');
+			var progressbar = document.getElementById('progressbar');
+
+			if (displayed_players == 4 && chronoStarted == false) {
+
+				if (progressbar.style.visibility == "hidden") {
+					progressbar.style.visibility = "visible";
+				}
+
+				socket.emit('timerPreGame', id_partie);
+				chronoStarted = true;
+				$('#msginfoquestion').html('Préparez-vous !');
+			}
+
+		});
+
+		socket.on('displayTimer', function(chrono, chronoTenths) {
+			var progressbarfill = document.getElementById('filledProgressBar');
+			var progressbar = document.getElementById('progressbar');
+			var chronoMap = parseInt(chronoTenths * (2/3));
+			progressbarfill.style.width = chronoMap+"%";
+			$('#chrono').html(chrono);
+			if (chronoMap == 0) {
+				progressbar.style.display = "none";
+				socket.emit('getQuestionsIdEminem', id_partie);
+			}
+		});
+
+		function compteur() {
+			var compteurPrive = 0;
+			function changeValeur(val) {
+				compteurPrive += val;
+			}
+			return {
+				increment: function() {
+					changeValeur(1);
+				},
+				valeur: function() {
+					return compteurPrive;
+				}
+			};
+		}
+
+		var idQuestion = new Array();
+		var questionNumber = compteur();
+		socket.on('questions', function(questions) {
+			console.log(questions);
+			idQuestion[questionNumber.valeur()] = questions[questionNumber.valeur()]['id_question'];
+			console.log(idQuestion[questionNumber.valeur()]);
+			socket.emit('getQuestion', idQuestion[questionNumber.valeur()]);
+		});
+
+		socket.on('displayQuestion', function(question) {
+			if (questionNumber.valeur() < 10) {
+				setTimeout(function () {
+					console.log(questionNumber.valeur());
+					console.log(question);
+					console.log(question.intitule);
+					$('#rep1').html(question.rep_1);
+					$('#rep2').html(question.rep_2);
+					$('#rep3').html(question.rep_3);
+					$('#rep4').html(question.rep_4);
+					var btnA = document.getElementById('a1');
+					var btnB= document.getElementById('a2');
+					var btnC = document.getElementById('a3');
+					var btnD = document.getElementById('a4');
+					btnA.disabled = false;
+					btnB.disabled = false;
+					btnC.disabled = false;
+					btnD.disabled = false;
+					btnA.style.background = 'white';
+					btnB.style.background = 'white';
+					btnC.style.background = 'white';
+					btnD.style.background = 'white';
+					$('#msginfoquestion').html(question.intitule);
+					questionNumber.increment();
+					socket.emit('timerPreGame', id_partie, id_question);
+					var audioQuestion = new Audio('/mp3/vertical.mp3');
+					audioQuestion.play();
+					audioQuestion.addEventListener("canplaythrough", function () {
+									setTimeout(function(){
+											audioQuestion.pause();
+											audioQuestion.currentTime = 0;
+									},
+									10000);
+					}, false);
+				}, 3000);
+			}
+		});
+
+		socket.on('displayTimerQuestion', function(chrono, chronoTenths) {
+			progressbar.style.display = "inline";
+			var progressbarfill = document.getElementById('filledProgressBar');
+			var progressbar = document.getElementById('progressbar');
+			var chronoMap = parseInt(chronoTenths * (2/3));
+			progressbarfill.style.width = chronoMap+"%";
+			$('#chrono').html(chrono);
+			if (chronoMap == 0) {
+				progressbar.style.display = "none";
+			}
+		});
+	</script>
+
+</body>
+</html>

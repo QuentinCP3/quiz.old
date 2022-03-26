@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+    <title>Accueil</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/jouer.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+</head>
+<style>
+  .gold {
+    background-color: gold!important;
+  }
+
+  .silver {
+    background-color: silver!important;
+  }
+
+  .bronze {
+    background-color: #cd7f32!important;
+  }
+
+  td {
+    font-weight: bold;
+    text-shadow: 0.5px 0.5px 0.5px white;
+    color: white;
+    padding: 0.25rem!important
+  }
+</style>
+<body>
+
+    <% include partiel/navbar.ejs %>
+    <div class="container-fluid">
+      <div class="row" style="padding:2%;">
+        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+          <div class="card">
+            <div id="infos">
+              <b>Solde de <%= user.nom %> :</b> <%= user.points %> pts<br/>
+              <b>Niveau :</b><br/>
+              <b>Parties restantes :</b> <%= user.parties_gratuites %>
+            </div>
+          </div>
+        </div>
+        <div class="welcome">
+          <p>Bonjour <b><%= user.nom %></b> (id session : <%= idsession %>)<br/>
+          Bienvenue sur Jacquizz</p>
+        </div>
+      </div>
+      <div class="card pl-0 pr-0 col-xl-3 col-lg- 4 col-md-5 col-sm-6 col-12" style="max-height: 500px">
+        <h4 class="card-title mt-2" style="text-align: center">Différents classements</h4>
+        <div class="carousel slide" id="nextRanking" data-ride="carousel">
+        <div class="card-body carousel-inner pt-0">
+          <div class="carousel-item active">
+            <div class="table-responsive">
+              <table id="total">
+                <thead>
+                  <th></th>
+                  <th>Joueur</th>
+                  <th>Pourcentage</th>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="table-responsive">
+              <table id="sport" class="table-home table mb-0 sortable">
+                <thead class="table-light">
+                  <tr>
+                    <th colspan="3">Sport</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for (let i = 0; i < stats_tot.length; i ++) { %>
+                      <% if (i == 0) { %>
+                        <tr style="background-color: gold;">
+                      <% } else if (i == 1) { %>
+                        <tr style="background-color: silver;">
+                      <% } else if (i == 2) { %>
+                        <tr style="background-color: #cd7f32;">
+                      <% } else { %>
+                        <tr>
+                      <% } %>
+                      <% if (user.id == stats_tot[i].id_membre) { %>
+                        <th style="color: #32CD32; font-weight: bold; text-shadow: 1px 1px 0.5px black; padding: 0.25rem!important" scope="row"><%= i+1 %></th>
+                        <td style="color: #32CD32; font-weight: bold; text-shadow: 1px 1px 0.5px black; padding: 0.25rem!important"><%= stats_tot[i].nom %></td>
+                        <td style="color: #32CD32; font-weight: bold; text-shadow: 1px 1px 0.5px black; padding: 0.25rem!important"><%= parseFloat(Math.round((stats_tot[i].bonnes_rep_sports/(stats_tot[i].bonnes_rep_sports+stats_tot[i].mauvaises_rep_sports) * 100) * 100))/100+"%" %></td>
+                      <% } else { %>
+                        <th style="font-weight: bold; text-shadow: 1px 1px 0.5px black; padding: 0.25rem!important" scope="row"><%= i+1 %></th>
+                        <td style="font-weight: bold; text-shadow: 1px 1px 0.5px black; padding: 0.25rem!important"><%= stats_tot[i].nom %></td>
+                        <td style="font-weight: bold; text-shadow: 1px 1px 0.5px black; padding: 0.25rem!important"><%= parseFloat(Math.round((stats_tot[i].bonnes_rep_sports/(stats_tot[i].bonnes_rep_sports+stats_tot[i].mauvaises_rep_sports) * 100) * 100))/100+"%" %></td>
+                      <% } %>
+                    </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="table-responsive">
+              <table id="art-litte" class="table-home table mb-0 sortable">
+                <thead class="table-light">
+                  <tr>
+                    <th colspan="3">Arts et littérature</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for (let i = 0; i < stats_tot.length; i ++) { %>
+                      <% if (i == 0) { %>
+                        <tr style="background-color: gold;">
+                      <% } else if (i == 1) { %>
+                        <tr style="background-color: silver;">
+                      <% } else if (i == 2) { %>
+                        <tr style="background-color: #cd7f32;">
+                      <% } else { %>
+                        <tr>
+                      <% } %>
+                      <% if (user.id == stats_tot[i].id_membre) { %>
+                        <th style="color: #32CD32; font-weight: bold; text-shadow: 1px 1px 0.5px black; padding: 0.25rem!important" scope="row"><%= i+1 %></th>
+                        <td style="color: #32CD32; font-weight: bold; text-shadow: 1px 1px 0.5px black; padding: 0.25rem!important"><%= stats_tot[i].nom %></td>
+                        <td style="color: #32CD32; font-weight: bold; text-shadow: 1px 1px 0.5px black; padding: 0.25rem!important"><%= parseFloat(Math.round((stats_tot[i].bonnes_rep_arts_litte/(stats_tot[i].bonnes_rep_arts_litte+stats_tot[i].mauvaises_rep_arts_litte) * 100) * 100))/100+"%" %></td>
+                      <% } else { %>
+                        <th style="font-weight: bold; text-shadow: 1px 1px 0.5px black; padding: 0.25rem!important" scope="row"><%= i+1 %></th>
+                        <td style="font-weight: bold; text-shadow: 1px 1px 0.5px black; padding: 0.25rem!important"><%= stats_tot[i].nom %></td>
+                        <td style="font-weight: bold; text-shadow: 1px 1px 0.5px black; padding: 0.25rem!important"><%= parseFloat(Math.round((stats_tot[i].bonnes_rep_arts_litte/(stats_tot[i].bonnes_rep_arts_litte+stats_tot[i].mauvaises_rep_arts_litte) * 100) * 100))/100+"%" %></td>
+                      <% } %>
+                    </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#nextRanking" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#nextRanking" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+<% include partiel/footer.ejs %>
+
+<script src="/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+
+//var socket = io.connect('http://192.168.10.63:3000');
+//var socket = io.connect('http://192.168.0.55:3000');
+var socket = io.connect();
+  socket.emit('switchRoom', {room: 'Accueil'});
+</script>
+
+<script>
+    $(document).ready( function () {
+      let dataTable = [];
+      <% stats_tot.forEach((item, i) => { %>
+        dataTable.push([
+          <%= i+1 %>,
+          "<%= item.nom %>",
+          <%= item.pourcentage %>
+        ]);
+      <% }); %>
+
+      console.log(dataTable);
+
+      $('#total').DataTable({
+         "order": [ 2, 'desc' ],
+         "paging": false,
+         data: dataTable,
+         "createdRow": function( row, data, dataIndex){
+                if( data[0] ==  1){
+                    $(row).addClass('gold');
+                } else if( data[0] ==  2){
+                    $(row).addClass('silver');
+                } else if( data[0] ==  3){
+                    $(row).addClass('bronze');
+                }
+            }
+      });
+    } );
+</script>
+
+
+</body>
+</html>

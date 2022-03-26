@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <title>Inscription</title>
+    <link rel="stylesheet" href="/css/bootstrap3.0.2.min.css" integrity="sha384-9d8Aogf7tHtMbZ308B717RIAg9eT36ej1BichgRciu424PhBqbSByjRC78yLE7ZX" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" integrity="sha384-VkQkSCa5cfqslmkwUAeovUYczl8ONc69MCGqqV0zsRwXjfQqaFvCmMppB03Uvkqt" crossorigina="anonymous">
+    <style>
+    body        { padding-top:80px; }
+</style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="col-sm-6 col-sm-offset-3">
+
+            <h1><span class="fa fa-sign-in"></span> Inscrption</h1>
+
+            <!-- Afficher messages d'erreur lors de la creation du compte -->
+            <% if (message.length > 0) { %>
+            <div class="alert alert-danger"><%= message %></div>
+            <% } %>
+
+            <!-- Formulaire d'inscription -->
+            <form action="/signup" method="post">
+                <div class="form-group">
+                    <label>Pseudo</label>
+                    <input type="text" class="form-control" name="nom">
+                </div>
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" class="form-control" name="pass">
+                </div>
+                <div class="form-group">
+                    <label>Mail</label>
+                    <input type="email" class="form-control" name="email">
+                </div>
+                <div class="form-group">
+                    <label>Date de naissance</label>
+                    <input type="date" class="form-control" name="date_naissance"/>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-lg">S'inscrire</button>
+            </form>
+
+            <hr>
+
+            <p> Se connecter : <a href="/login">Login</a></p>
+            <p>Accueil : <a href="/">home</a>.</p>
+
+        </div>
+
+    </div>
+</body>
+</html>

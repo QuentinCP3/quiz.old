@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+    <link rel="stylesheet" href="/main.css">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/css/loading-bar.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>Classements</title>
+</head>
+<body>
+<% include partiel/navbar.ejs %>
+
+
+	<center>
+	<div class="container-fluid" style="margin: 0 auto;">
+		<p id="titre">CLASSEMENTS</p>
+		<div class="row justify-content-md-center justify-content-lg-center">
+				<% for (var i = 0; i < classements_all.length; i++) { %>
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12" style="margin: 5px <%=10/6 %>%!important">
+					<table class="table-classement" style="display: inline-block; overflow-y: scroll; height: 60vh; width: 100%">
+						<thead>
+							<tr>
+									<th colspan="3"><%= classements_all[i][0].libelle %> - ALL-TIME</th>
+							</tr>
+						</thead>
+							<tbody>
+									<% for (var j = 0; j < classements_all[i].length; j++) { %>
+									<tr
+									<% if (user.id == classements_all[i][j].id) {
+											if (j == 0) { %>
+												style="color: #32CD32; background-color: gold; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									 <% } else if (j == 1) { %>
+												style="color: #32CD32; background-color: silver; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									 <% } else if (j == 2) { %>
+												style="color: #32CD32; background-color: #cd7f32; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									 <% } else { %>
+												style="color: #32CD32"
+									 <% }
+								 } else {
+										 if (j == 0) { %>
+											 style="background-color: gold; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									<% } else if (j == 1) { %>
+											 style="background-color: silver; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									<% } else if (j == 2) { %>
+											 style="background-color: #cd7f32; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									<% }
+								 } %>
+									>
+											<td style="width:1%"><%= j + 1 %></td>
+											<td><%= classements_all[i][j].nom %></td>
+											<td><%= classements_all[i][j].score %></td>
+									</tr>
+									<% } %>
+							</tbody>
+					</table>
+				</div>
+				<% } %>
+		</div>
+		<div class="row justify-content-md-center justify-content-lg-center">
+				<% for (var i = 0; i < classements_month.length; i++) { %>
+					<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12" style="margin: 5px  <%=10/6 %>%!important">
+					<table class="table-classement" style="display: inline-block; overflow-y: scroll; height: 60vh; width: 100%">
+						<thead>
+							<tr>
+									<th colspan="3"><%= classements_month[i][0].libelle %> - MENSUEL</th>
+							</tr>
+						</thead>
+							<tbody>
+									<% for (var j = 0; j < classements_month[i].length; j++) { %>
+									<tr
+									<% if (user.id == classements_month[i][j].id) {
+											if (j == 0) { %>
+												style="color: #32CD32; background-color: gold; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									 <% } else if (j == 1) { %>
+												style="color: #32CD32; background-color: silver; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									 <% } else if (j == 2) { %>
+												style="color: #32CD32; background-color: #cd7f32; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									 <% } else { %>
+												style="color: #32CD32"
+									 <% }
+								 } else {
+										 if (j == 0) { %>
+											 style="background-color: gold; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									<% } else if (j == 1) { %>
+											 style="background-color: silver; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									<% } else if (j == 2) { %>
+											 style="background-color: #cd7f32; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									<% }
+								 } %>
+									>
+											<td style="width:1%"><%= j + 1 %></td>
+											<td><%= classements_month[i][j].nom %></td>
+											<td><%= classements_month[i][j].score %></td>
+									</tr>
+									<% } %>
+							</tbody>
+					</table>
+				</div>
+				<% } %>
+		</div>
+		<div class="row justify-content-md-center">
+				<% for (var i = 0; i < classements_week.length; i++) { %>
+				<div style="width: 30%; margin: 0 <%=10/6 %>%">
+					<table class="table-classement" style="display: inline-block; overflow-y: scroll; height: 60vh; width: 100%">
+						<thead>
+							<tr>
+									<th colspan="3"><%= classements_week[i][0].libelle %> - HEBDOMADAIRE</th>
+							</tr>
+						</thead>
+							<tbody>
+									<% for (var j = 0; j < classements_week[i].length; j++) { %>
+									<tr
+									<% if (user.id == classements_week[i][j].id) {
+											if (j == 0) { %>
+												style="color: #32CD32; background-color: gold; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									 <% } else if (j == 1) { %>
+												style="color: #32CD32; background-color: silver; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									 <% } else if (j == 2) { %>
+												style="color: #32CD32; background-color: #cd7f32; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									 <% } else { %>
+												style="color: #32CD32"
+									 <% }
+								 } else {
+										 if (j == 0) { %>
+											 style="background-color: gold; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									<% } else if (j == 1) { %>
+											 style="background-color: silver; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									<% } else if (j == 2) { %>
+											 style="background-color: #cd7f32; font-weight: bold; text-shadow: 1px 1px 0.5px black"
+									<% }
+								 } %>
+									>
+											<td style="width:1%"><%= j + 1 %></td>
+											<td><%= classements_week[i][j].nom %></td>
+											<td><%= classements_week[i][j].score %></td>
+									</tr>
+									<% } %>
+							</tbody>
+					</table>
+				</div>
+				<% } %>
+		</div>
+	</div>
+	</center>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/loading-bar.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		//var socket = io.connect('http://192.168.10.63:3000');
+		var socket = io.connect();
+		//var socket = io.connect('http://192.168.0.55:3000');
+
+	</script>
+</body>
+</html>
